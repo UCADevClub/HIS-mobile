@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomTextFormField extends StatefulWidget {
+class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     required this.title,
@@ -8,6 +8,7 @@ class CustomTextFormField extends StatefulWidget {
     this.onChanged,
     this.readOnly,
     this.keyboardType,
+    this.validator,
   });
 
   final String title;
@@ -15,12 +16,8 @@ class CustomTextFormField extends StatefulWidget {
   final Function(String)? onChanged;
   final bool? readOnly;
   final TextInputType? keyboardType;
+  final String? Function(String?)? validator;
 
-  @override
-  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
-}
-
-class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,7 +28,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             bottom: 10,
             left: 7.5,
           ),
-          child: Text(widget.title),
+          child: Text(title),
         ),
         TextFormField(
           decoration: InputDecoration(
@@ -39,11 +36,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               borderRadius: BorderRadius.circular(15),
             ),
           ),
-          controller: widget.controller,
-          onChanged: widget.onChanged ?? (value) {},
-          readOnly: widget.readOnly ?? false,
-          keyboardType: widget.keyboardType ?? TextInputType.text,
-          validator: ,
+          controller: controller,
+          onChanged: onChanged ?? (value) {},
+          readOnly: readOnly ?? false,
+          keyboardType: keyboardType ?? TextInputType.text,
+          validator: validator,
         ),
       ],
     );

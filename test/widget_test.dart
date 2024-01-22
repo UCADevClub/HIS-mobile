@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:his_mobile/main.dart';
 import 'package:his_mobile/presentation/application/application.dart';
 
 void main() {

@@ -57,12 +57,12 @@ class _AuthPageState extends State<AuthPage> {
                     title: 'Login',
                     onPressed: () {
                       if (loginKey.currentState!.validate()) {
-                        BlocProvider.of<AuthBloc>(context).add(
-                          LoginRequested(
-                            // login: _loginController.text,
-                            // password: _passwordController.text,
-                          ),
-                        );
+                        // BlocProvider.of<AuthBloc>(context).add(
+                        //   LoginRequested(
+                        //     // login: _loginController.text,
+                        //     // password: _passwordController.text,
+                        //   ),
+                          print('Login');
                       }
                     },
                   ),

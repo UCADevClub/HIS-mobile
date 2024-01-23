@@ -33,7 +33,7 @@ class CustomTextFormField extends StatelessWidget {
         TextFormField(
           decoration: InputDecoration(
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(10),
             ),
           ),
           controller: controller,

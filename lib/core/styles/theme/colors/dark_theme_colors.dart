@@ -6,10 +6,10 @@ class AppColorsDark extends AppColors {
   const AppColorsDark();
 
   @override
-  Color get primaryColor => throw UnimplementedError();
+  Color get primaryColor => const Color(0xff5ABDDA);
 
-  @override
-  Color get secondaryColor => throw UnimplementedError();
+  // @override
+  // Color get secondaryColor => throw UnimplementedError();
 
   @override
   Color get white => const Color(0xffffffff);

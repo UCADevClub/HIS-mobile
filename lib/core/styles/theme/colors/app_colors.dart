@@ -11,7 +11,7 @@ abstract class AppColors {
 
   Color get primaryColor;
 
-  Color get secondaryColor;
+  // Color get secondaryColor;
 
   Color get white;
 

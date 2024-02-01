@@ -8,8 +8,8 @@ class AppColorsLight extends AppColors {
   @override
   Color get primaryColor => const Color(0xff5ABDDA);
 
-  @override
-  Color get secondaryColor => throw UnimplementedError();
+  // @override
+  // Color get secondaryColor => throw UnimplementedError();
 
   @override
   Color get white => const Color(0xffffffff);

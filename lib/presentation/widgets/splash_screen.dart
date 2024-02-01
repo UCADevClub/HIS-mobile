@@ -1,9 +1,8 @@
 import 'dart:async';
 
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:his_mobile/presentation/routes/app_router.gr.dart';
+import 'package:his_mobile/core/routes/app_router.gr.dart';
 
 @RoutePage()
 class SplashScreen extends StatefulWidget {

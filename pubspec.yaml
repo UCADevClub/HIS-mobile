@@ -21,6 +21,7 @@ dependencies:
   equatable: ^2.0.5
   flutter_svg: ^2.0.9
   google_fonts: ^6.1.0
+  animated_toggle_switch: ^0.8.0
 
 dev_dependencies:
   flutter_test:

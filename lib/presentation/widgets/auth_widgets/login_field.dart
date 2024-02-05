@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:his_mobile/core/styles/validation/form_validation.dart';
-import 'package:his_mobile/core/styles/widgets/forms/custom_text_form_field.dart';
+import 'package:his_mobile/presentation/widgets/forms/custom_text_form_field.dart';
 
 class LoginField extends StatelessWidget {
   const LoginField({
@@ -17,8 +17,8 @@ class LoginField extends StatelessWidget {
     return Column(
       children: [
         CustomTextFormField(
-          title: 'Электронная почта',
-          hintText: 'Введите ваш email',
+          title: 'ИНН',
+          hintText: 'Введите ваш ИНН',
           controller: login,
           validator: (_) => FormValidation.validateInn(
             login.text,

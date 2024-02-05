@@ -2,10 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:his_mobile/core/routes/app_router.gr.dart';
-import 'package:his_mobile/core/styles/widgets/app_button.dart';
 import 'package:his_mobile/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'package:his_mobile/presentation/widgets/auth_widgets/details_line.dart';
 import 'package:his_mobile/presentation/widgets/auth_widgets/login_field.dart';
+import 'package:his_mobile/presentation/widgets/buttons/app_button.dart';
 
 @RoutePage()
 class AuthPage extends StatefulWidget {
@@ -57,9 +57,9 @@ class _AuthPageState extends State<AuthPage> {
                     AppButton(
                       title: 'Войти',
                       onPressed: () {
-                        if (loginKey.currentState!.validate()) {
-                          context.replaceRoute(const HomeRoute());
-                        }
+                        // if (loginKey.currentState!.validate()) {
+                        context.router.push(const HomeRoute());
+                        // }
                       },
                     ),
                   ],

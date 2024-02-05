@@ -1,5 +1,3 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'auth_model.g.dart';
@@ -16,5 +14,6 @@ class AuthModel {
     required this.password,
   });
 
-  factory AuthModel.fromJson(Map<String, dynamic> json) => _$AuthModelFromJson(json);
+  factory AuthModel.fromJson(Map<String, dynamic> json) =>
+      _$AuthModelFromJson(json);
 }

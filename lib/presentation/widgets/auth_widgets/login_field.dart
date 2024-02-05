@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:his_mobile/core/styles/validation/form_validation.dart';
+import 'package:his_mobile/core/validation/form_validation.dart';
 import 'package:his_mobile/presentation/widgets/forms/custom_text_form_field.dart';
 
 class LoginField extends StatelessWidget {

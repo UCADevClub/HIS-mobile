@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:his_mobile/core/extensions/i10n_extension.dart';
 import 'package:his_mobile/core/routes/app_router.gr.dart';
 import 'package:his_mobile/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'package:his_mobile/presentation/widgets/auth_widgets/details_line.dart';
@@ -55,11 +56,12 @@ class _AuthPageState extends State<AuthPage> {
                     ),
                     const SizedBox(height: 10),
                     AppButton(
-                      title: 'Войти',
+                      title: context.i10n.enter,
                       onPressed: () {
                         // if (loginKey.currentState!.validate()) {
                         context.router.push(const HomeRoute());
                         // }
+                        // HisMobile.of(context).setLocale(const Locale('ky'));
                       },
                     ),
                   ],

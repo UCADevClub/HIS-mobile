@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
 
 class DetailsLine extends StatelessWidget {
   const DetailsLine({
@@ -14,25 +15,27 @@ class DetailsLine extends StatelessWidget {
   final Function(bool?) onChanged;
   final Function()? onTap;
 
-
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Checkbox(
-          value: value,
-          onChanged: onChanged,
+        Row(
+          children: [
+            Checkbox(
+              value: value,
+              onChanged: onChanged,
+            ),
+            Text(
+              label,
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+          ],
         ),
-        Text(
-          label,
-          style: Theme.of(context).textTheme.displaySmall,
-        ),
-        const SizedBox(width: 70),
         TextButton(
           onPressed: onTap,
           child: Text(
-            'Забыли пароль?',
+            context.i10n.forgot_password,
             style: Theme.of(context).textTheme.displaySmall!.copyWith(
                   color: Theme.of(context).primaryColor,
                 ),

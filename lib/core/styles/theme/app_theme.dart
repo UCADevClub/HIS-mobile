@@ -12,6 +12,11 @@ class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: _lightColors.primaryColor,
+    colorScheme: ColorScheme.light(
+      primary: _lightColors.primaryColor,
+      secondary: _lightColors.secondaryColor,
+      background: _lightColors.secondaryColor,
+    ),
     fontFamily: GoogleFonts.montserrat(
       fontWeight: FontWeight.w600,
     ).fontFamily,
@@ -33,6 +38,14 @@ class AppTheme {
         return _lightColors.primaryColor;
       }),
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: _lightColors.white,
+      unselectedItemColor: _lightColors.grey,
+      unselectedLabelStyle: TextStyle(
+        color: _lightColors.grey,
+        fontSize: dimens.headlineSmall,
+      ),
+    ),
   );
 
   static const _darkColors = appColorsDark;
@@ -40,12 +53,36 @@ class AppTheme {
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: _darkColors.primaryColor,
+    colorScheme: ColorScheme.dark(
+      primary: _darkColors.primaryColor,
+      secondary: _darkColors.secondaryColor,
+      background: _darkColors.secondaryColor,
+    ),
     fontFamily: GoogleFonts.montserrat(
       fontWeight: FontWeight.w600,
     ).fontFamily,
     textTheme: AppTextTheme(
       colors: _darkColors,
       dimens: dimens,
+    ),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
+        if (states.contains(MaterialState.selected)) {
+          return _lightColors.primaryColor;
+        }
+        return _lightColors.white;
+      }),
+      overlayColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
+        if (states.contains(MaterialState.hovered)) {
+          return _lightColors.white;
+        }
+        return _lightColors.primaryColor;
+      }),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: _lightColors.primaryColor,
+      selectedItemColor: _lightColors.secondaryColor,
+      unselectedItemColor: _lightColors.white,
     ),
   );
 }

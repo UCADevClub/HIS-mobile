@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:his_mobile/presentation/widgets/layout/app_bottom_bar.dart';
 import 'package:his_mobile/presentation/widgets/layout/app_drawer.dart';
 
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -22,7 +23,9 @@ class HomePage extends StatelessWidget {
         ],
         automaticallyImplyLeading: false,
       ),
+      bottomNavigationBar: const AppBottomBar(),
       drawer: const AppDrawer(),
+      backgroundColor: Theme.of(context).colorScheme.background,
     );
   }
 }

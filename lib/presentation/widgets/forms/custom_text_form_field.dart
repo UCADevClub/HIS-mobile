@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
 
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
@@ -56,7 +57,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
         SizedBox(
           width: widget.width ?? 300,
-          height: widget.height ?? 60,
           child: TextFormField(
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(
@@ -67,14 +67,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               hintStyle: Theme.of(context).textTheme.headlineMedium!.copyWith(
                     color: Colors.grey,
                   ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(
-                  color: Colors.grey,
-                ),
-              ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius:
+                    BorderRadius.circular(context.dimens.borderRadius),
               ),
               suffixIcon: widget.obscureText == true
                   ? IconButton(
@@ -91,6 +86,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                       ),
                     )
                   : null,
+              errorMaxLines: 2,
             ),
             obscureText: hideText!,
             controller: widget.controller,

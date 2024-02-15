@@ -24,7 +24,7 @@ class LoginField extends StatelessWidget {
             login.text,
           ),
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 20),
         CustomTextFormField(
           title: 'Пароль',
           hintText: 'Введите ваш пароль',

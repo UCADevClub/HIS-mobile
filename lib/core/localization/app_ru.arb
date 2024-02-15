@@ -1,0 +1,11 @@
+{
+  "enter": "Войти",
+  "logout": "Выйти",
+
+  "remember_me": "Запомнить меня",
+  "forgot_password": "Забыли пароль?",
+  "welcome": "Добро пожаловать",
+
+  "personal_details": "Персональный данные",
+  "settings": "Настройки"
+}

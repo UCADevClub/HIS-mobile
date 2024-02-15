@@ -1,6 +1,8 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
+import 'package:his_mobile/presentation/application/application.dart';
 import 'package:his_mobile/presentation/widgets/buttons/app_button.dart';
 
 @RoutePage()
@@ -78,7 +80,7 @@ class _AppDrawerState extends State<AppDrawer> {
               borderColor: Colors.transparent,
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: [
-                BoxShadow(
+                const BoxShadow(
                   color: Colors.black26,
                   spreadRadius: 1,
                   blurRadius: 2,
@@ -93,13 +95,13 @@ class _AppDrawerState extends State<AppDrawer> {
             onPressed: () {
               print('Home');
             },
-            child: const Text('Home'),
+            child: Text(context.i10n.personal_details),
           ),
           TextButton(
             onPressed: () {
               print('Home');
             },
-            child: const Text('Home'),
+            child: Text(context.i10n.settings),
           ),
           const Spacer(),
           Padding(
@@ -111,7 +113,9 @@ class _AppDrawerState extends State<AppDrawer> {
             ),
             child: AppButton(
               title: 'Logout',
-              onPressed: () {},
+              onPressed: () {
+                HisMobile.of(context).setLocale(const Locale('ky'));
+              },
             ),
           )
         ],

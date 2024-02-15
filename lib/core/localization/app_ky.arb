@@ -1,0 +1,11 @@
+{
+  "enter" : "Кирүү",
+  "logout" : "Чыгуу",
+
+  "remember_me" : "Мени эстеп кал",
+  "forgot_password": "Сыр сөзүңүздү унуттуңузбу?",
+  "welcome": "Кош келиңиз",
+
+  "personal_details" : "Өздүк маалымат",
+  "settings" : "Орнотуулар"
+}

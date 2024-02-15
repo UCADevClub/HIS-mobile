@@ -33,13 +33,11 @@ dev_dependencies:
   build_runner: ^2.4.7
 
 flutter:
-
+  uses-material-design: true
   generate: true
 
-  uses-material-design: true
-
   assets:
-   - assets/
+   - assets/vectors/
 
   # fonts:
   #   - family: Schyler

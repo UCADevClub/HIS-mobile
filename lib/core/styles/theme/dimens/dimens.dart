@@ -19,4 +19,6 @@ class Dimens {
 
   // Border Radius
   final double borderRadius = 30;
+
+  final double iconSize = 30;
 }

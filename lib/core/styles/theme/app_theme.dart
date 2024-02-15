@@ -45,6 +45,23 @@ class AppTheme {
         color: _lightColors.grey,
         fontSize: dimens.headlineSmall,
       ),
+      selectedIconTheme: IconThemeData(
+        color: _lightColors.primaryColor,
+        size: dimens.iconSize,
+      ),
+      unselectedIconTheme: IconThemeData(
+        color: _lightColors.grey,
+        size: dimens.iconSize,
+      ),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: ButtonStyle(
+        iconSize: MaterialStateProperty.all(dimens.iconSize),
+      ),
+    ),
+    iconTheme: IconThemeData(
+      size: dimens.iconSize,
+      color: _lightColors.grey,
     ),
   );
 

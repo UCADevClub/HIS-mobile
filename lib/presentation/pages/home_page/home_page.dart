@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:his_mobile/presentation/widgets/layout/app_bottom_bar.dart';
 import 'package:his_mobile/presentation/widgets/layout/app_drawer.dart';
+import 'package:his_mobile/presentation/widgets/layout/app_top_bar.dart';
 
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -13,15 +14,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        title: const Text('Home Page'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.person),
-            onPressed: () => _scaffoldKey.currentState!.openDrawer(),
-          ),
-        ],
-        automaticallyImplyLeading: false,
+      appBar: AppTopBar(
+        scaffoldKey: _scaffoldKey,
+        title: 'Home',
       ),
       bottomNavigationBar: const AppBottomBar(),
       drawer: const AppDrawer(),

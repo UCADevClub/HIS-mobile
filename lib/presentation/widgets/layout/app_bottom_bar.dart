@@ -43,7 +43,6 @@ class _AppBottomBarState extends State<AppBottomBar> {
         padding: const EdgeInsets.all(10.0),
         child: Icon(
           icon,
-          size: 30.0,
           color: _selectedIndex == index ? Colors.white : Colors.grey,
         ),
       ),

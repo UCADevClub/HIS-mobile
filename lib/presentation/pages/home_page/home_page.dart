@@ -19,6 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +28,9 @@ class _HomePageState extends State<HomePage> {
         scaffoldKey: _scaffoldKey,
         title: 'Home',
       ),
-      body: _getBody(selectedIndex),
+      body: Center(
+        child: _getBody(selectedIndex),
+      ),
       bottomNavigationBar: AppBottomBar(
         selectedIndex: selectedIndex,
         onItemTapped: (int index) {

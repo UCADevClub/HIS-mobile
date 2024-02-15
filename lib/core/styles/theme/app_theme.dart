@@ -38,6 +38,19 @@ class AppTheme {
         return _lightColors.primaryColor;
       }),
     ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: _lightColors.white,
+      iconTheme: IconThemeData(
+        color: _lightColors.grey,
+      ),
+      actionsIconTheme: IconThemeData(
+        color: _lightColors.grey,
+      ),
+      titleTextStyle: TextStyle(
+        color: _lightColors.black,
+        fontSize: dimens.textDisplayLarge,
+      ),
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: _lightColors.white,
       unselectedItemColor: _lightColors.grey,
@@ -46,7 +59,7 @@ class AppTheme {
         fontSize: dimens.headlineSmall,
       ),
       selectedIconTheme: IconThemeData(
-        color: _lightColors.primaryColor,
+        color: _lightColors.white,
         size: dimens.iconSize,
       ),
       unselectedIconTheme: IconThemeData(

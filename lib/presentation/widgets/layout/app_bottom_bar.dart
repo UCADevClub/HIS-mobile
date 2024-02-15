@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:his_mobile/core/extensions/context_extension.dart';
 
-class AppBottomBar extends StatefulWidget {
-  const AppBottomBar({super.key});
+class AppBottomBar extends StatelessWidget {
+  const AppBottomBar({
+    super.key,
+    required this.selectedIndex,
+    required this.onItemTapped,
+  });
 
-  @override
-  State<AppBottomBar> createState() => _AppBottomBarState();
-}
+  final int selectedIndex;
+  final void Function(int) onItemTapped;
 
-class _AppBottomBarState extends State<AppBottomBar> {
-  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -23,12 +24,12 @@ class _AppBottomBarState extends State<AppBottomBar> {
         showUnselectedLabels: false,
         elevation: 10,
         items: [
-          customNavBarItem(Icons.home, 0),
-          customNavBarItem(Icons.search, 1),
-          customNavBarItem(Icons.notifications, 2),
+          customNavBarItem(Icons.calendar_today_rounded, 0),
+          customNavBarItem(Icons.home_rounded, 1),
+          customNavBarItem(Icons.medication_rounded, 2),
         ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        currentIndex: selectedIndex,
+        onTap: onItemTapped,
       ),
     );
   }
@@ -38,21 +39,14 @@ class _AppBottomBarState extends State<AppBottomBar> {
       icon: Container(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: _selectedIndex == index ? Colors.blue : Colors.transparent,
+          color: selectedIndex == index ? Colors.blue : Colors.transparent,
         ),
         padding: const EdgeInsets.all(10.0),
         child: Icon(
           icon,
-          color: _selectedIndex == index ? Colors.white : Colors.grey,
         ),
       ),
       label: '',
     );
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
   }
 }

@@ -6,6 +6,17 @@
   "forgot_password": "Сыр сөзүңүздү унуттуңузбу?",
   "welcome": "Кош келиңиз",
 
+  "email": "Электрондук почта",
+  "password": "Сыр сөз",
+  "enter_email": "Электрондук почта киргизиңиз",
+  "enter_password": "Сыр сөз киргизиңиз",
+
+  "email_required": "Электрондук почта керек",
+  "email_invalid": "Электрондук почта форматы жараксыз",
+  "password_required": "Сыр сөз керек",
+  "password_invalid": "Сыр сөз форматы жараксыз",
+  "password_min_length": "Сыр сөз 6 символдон аз болбошу керек",
+
   "personal_details" : "Өздүк маалымат",
   "settings" : "Орнотуулар"
 }

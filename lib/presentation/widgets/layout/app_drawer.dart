@@ -1,4 +1,3 @@
-import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:his_mobile/core/extensions/context_extension.dart';
@@ -31,7 +30,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   Expanded(
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: Colors.amber,
+                        color: Colors.grey,
                         shape: BoxShape.circle,
                       ),
                     ),
@@ -57,40 +56,40 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
             ),
           ),
-          AnimatedToggleSwitch<int>.size(
-            textDirection: TextDirection.rtl,
-            current: current,
-            values: const [0, 1],
-            iconOpacity: 0.2,
-            indicatorSize: const Size.fromWidth(100),
-            iconBuilder: (index) => index == 0
-                ? const Icon(
-                    Icons.home,
-                    size: 30,
-                    color: Colors.white,
-                  )
-                : const Icon(
-                    Icons.settings,
-                    size: 30,
-                    color: Colors.white,
-                  ),
-            borderWidth: 4.0,
-            iconAnimationType: AnimationType.onHover,
-            style: ToggleStyle(
-              borderColor: Colors.transparent,
-              borderRadius: BorderRadius.circular(10.0),
-              boxShadow: [
-                const BoxShadow(
-                  color: Colors.black26,
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: Offset(0, 1.5),
-                ),
-              ],
-            ),
-            onChanged: (int i) => setState(() => current = i),
-            onTap: (i) => print('Tapped on $i'),
-          ),
+          // AnimatedToggleSwitch<int>.size(
+          //   textDirection: TextDirection.rtl,
+          //   current: current,
+          //   values: const [0, 1],
+          //   iconOpacity: 0.2,
+          //   indicatorSize: const Size.fromWidth(100),
+          //   iconBuilder: (index) => index == 0
+          //       ? const Icon(
+          //           Icons.home,
+          //           size: 30,
+          //           color: Colors.white,
+          //         )
+          //       : const Icon(
+          //           Icons.settings,
+          //           size: 30,
+          //           color: Colors.white,
+          //         ),
+          //   borderWidth: 4.0,
+          //   iconAnimationType: AnimationType.onHover,
+          //   style: ToggleStyle(
+          //     borderColor: Colors.transparent,
+          //     borderRadius: BorderRadius.circular(10.0),
+          //     boxShadow: [
+          //       const BoxShadow(
+          //         color: Colors.black26,
+          //         spreadRadius: 1,
+          //         blurRadius: 2,
+          //         offset: Offset(0, 1.5),
+          //       ),
+          //     ],
+          //   ),
+          //   onChanged: (int i) => setState(() => current = i),
+          //   onTap: (i) => print('Tapped on $i'),
+          // ),
           TextButton(
             onPressed: () {
               print('Home');
@@ -114,7 +113,7 @@ class _AppDrawerState extends State<AppDrawer> {
             child: AppButton(
               title: 'Logout',
               onPressed: () {
-                HisMobile.of(context).setLocale(const Locale('ky'));
+                HisMobile.of(context).setLocale(const Locale('ru'));
               },
             ),
           )

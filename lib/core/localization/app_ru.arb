@@ -6,6 +6,17 @@
   "forgot_password": "Забыли пароль?",
   "welcome": "Добро пожаловать",
 
+  "email": "Электронная почта",
+  "password": "Пароль",
+  "enter_email": "Введите электронную почту",
+  "enter_password": "Введите пароль",
+
+  "email_required": "Электронная почта обязательна",
+  "email_invalid": "Неверный формат электронной почты",
+  "password_required": "Пароль обязателен",
+  "password_invalid": "Неверный формат пароля",
+  "password_min_length": "Пароль должен быть не менее 6 символов",
+
   "personal_details": "Персональный данные",
   "settings": "Настройки"
 }

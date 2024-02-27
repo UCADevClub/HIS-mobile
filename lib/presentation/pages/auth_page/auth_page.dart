@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:his_mobile/core/extensions/context_extension.dart';
 import 'package:his_mobile/core/routes/app_router.gr.dart';
+import 'package:his_mobile/presentation/application/application.dart';
 import 'package:his_mobile/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'package:his_mobile/presentation/widgets/auth_widgets/details_line.dart';
 import 'package:his_mobile/presentation/widgets/auth_widgets/login_field.dart';
@@ -53,22 +54,23 @@ class _AuthPageState extends State<AuthPage> {
                   onChanged: (bool? value) {
                     setState(() {
                       _checked = value!;
+                      HisMobile.of(context).setLocale(const Locale('ru'));
                       print('Запомнил');
                     });
                   },
                   onTap: () {
+                    HisMobile.of(context).setLocale(const Locale('ky'));
                     print('Не забывай больше');
                   },
                 ),
                 AppButton(
                   title: context.i10n.enter,
                   onPressed: () {
-                    // if (loginKey.currentState!.validate()) {
-                    context.router.push(
-                      const HomeRoute(),
-                    );
-                    // }
-                    // HisMobile.of(context).setLocale(const Locale('ky'));
+                    if (loginKey.currentState!.validate()) {
+                      context.router.push(
+                        const HomeRoute(),
+                      );
+                    }
                   },
                 ),
               ],

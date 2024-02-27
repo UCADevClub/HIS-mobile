@@ -1,38 +1,33 @@
+import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
+
 class FormValidation {
-  FormValidation();
+  final BuildContext context;
 
-  static String? validateInn(String? value) {
+  FormValidation(this.context);
+
+  String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Введите ИНН';
+      return context.i10n.email_required;
     }
 
-    final numericValue = value.replaceAll(RegExp(r'[^0-9]'), '');
+    // Regular expression for basic email validation
+    final emailRegex = RegExp(
+      r'^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+    );
 
-    if (numericValue.length != 14) {
-      return 'Значение состоит из 14 цифр';
-    }
-
-    if (!numericValue.startsWith(RegExp(r'[1-2]'))) {
-      return 'Значение начинается с 1 или 2';
+    if (!emailRegex.hasMatch(value)) {
+      return context.i10n.email_invalid;
     }
 
     return null;
   }
 
-  static String? validateEmail(String value) {
+  String? validatePassword(String value) {
     if (value.isEmpty) {
-      return 'Почта не должна быть пустой';
-    } else if (!value.contains('@')) {
-      return 'Почта не верна';
-    }
-    return null;
-  }
-
-  static String? validatePassword(String value) {
-    if (value.isEmpty) {
-      return 'Пароль не должен быть пустым';
+      return context.i10n.password_required;
     } else if (value.length < 6) {
-      return 'Пароль должен состоять из более чем 6 символов';
+      return context.i10n.password_min_length;
     }
     return null;
   }

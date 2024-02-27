@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
 import 'package:his_mobile/core/validation/form_validation.dart';
 import 'package:his_mobile/presentation/widgets/forms/custom_text_form_field.dart';
 
@@ -14,22 +15,23 @@ class LoginField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final validation = FormValidation(context);
     return Column(
       children: [
         CustomTextFormField(
-          title: 'ИНН',
-          hintText: 'Введите ваш ИНН',
+          title: context.i10n.email,
+          hintText: context.i10n.enter_email,
           controller: login,
-          validator: (_) => FormValidation.validateInn(
+          validator: (_) => validation.validateEmail(
             login.text,
           ),
         ),
         const SizedBox(height: 20),
         CustomTextFormField(
-          title: 'Пароль',
-          hintText: 'Введите ваш пароль',
+          title: context.i10n.password,
+          hintText: context.i10n.enter_password,
           controller: password,
-          validator: (_) => FormValidation.validatePassword(
+          validator: (_) => validation.validatePassword(
             password.text,
           ),
           obscureText: true,

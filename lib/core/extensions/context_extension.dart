@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:his_mobile/core/styles/theme/dimens/dimens.dart';
+import 'package:his_mobile/presentation/application/application.dart';
 
 extension ContextExtension on BuildContext {
   // Theme
@@ -19,4 +20,8 @@ extension ContextExtension on BuildContext {
 
   // Dimensions
   Dimens get dimens => Dimens();
+
+  void setLocale(Locale locale) {
+    HisMobile.of(this).setLocale(locale);
+  }
 }

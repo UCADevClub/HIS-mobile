@@ -14,6 +14,7 @@ class ContentBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final theme = Theme.of(context);
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -23,7 +24,7 @@ class ContentBox extends StatelessWidget {
             width: width * 0.9,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(context.dimens.borderRadius),
-              color: Colors.blue,
+              color: theme.primaryColor,
             ),
             child: Padding(
               padding: const EdgeInsets.only(

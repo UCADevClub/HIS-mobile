@@ -1,8 +1,8 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:his_mobile/core/extensions/context_extension.dart';
 import 'package:his_mobile/presentation/application/application.dart';
 import 'package:his_mobile/presentation/widgets/buttons/app_button.dart';
+import 'package:his_mobile/presentation/widgets/buttons/app_text_button.dart';
 
 @RoutePage()
 class AppDrawer extends StatefulWidget {
@@ -90,17 +90,27 @@ class _AppDrawerState extends State<AppDrawer> {
           //   onChanged: (int i) => setState(() => current = i),
           //   onTap: (i) => print('Tapped on $i'),
           // ),
-          TextButton(
-            onPressed: () {
-              print('Home');
-            },
-            child: Text(context.i10n.personal_details),
+          AppTextButton(
+            title: "Персональные данные",
+            icon: Icons.person,
+            onPressed: () {},
           ),
-          TextButton(
+          AppTextButton(
+            title: "Страхование",
+            icon: Icons.safety_check,
+            onPressed: () {},
+          ),
+          AppTextButton(
+            title: "Изменить Пароль",
+            icon: Icons.lock,
             onPressed: () {
-              print('Home');
+              context.router.pushNamed('/change-password');
             },
-            child: Text(context.i10n.settings),
+          ),
+          AppTextButton(
+            title: "Настройки",
+            icon: Icons.settings,
+            onPressed: () {},
           ),
           const Spacer(),
           Padding(

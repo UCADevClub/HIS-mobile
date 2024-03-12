@@ -16,6 +16,17 @@
   "password_required": "Сыр сөз керек",
   "password_invalid": "Сыр сөз форматы жараксыз",
   "password_min_length": "Сыр сөз 6 символдон аз болбошу керек",
+  "change_password": "Сыр сөздү өзгөртүү",
+  "current_password": "Азырынки сыр сөз",
+  "new_password": "Жаңы сыр сөз",
+  "confirm_password": "Сыр сөздү бекитүү",
+  "enter_current_password": "Азырынки сыр сөз киргизиңиз",
+  "enter_new_password": "Жаңы сыр сөз киргизиңиз",
+  "enter_confirm_password": "Сыр сөздү бекитүү киргизиңиз",
+  "passwords_not_match": "Сыр сөздөр туура келбейт",
+  "password_change_error": "Сыр сөздү өзгөртүүдө ката кетти!",
+  "password_change_success": "Сыр сөздү өзгөртүү сӯттү!",
+  "change": "Өзгөртүү",
 
   "personal_details" : "Өздүк маалымат",
   "settings" : "Орнотуулар"

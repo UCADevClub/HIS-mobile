@@ -16,6 +16,17 @@
   "password_required": "Пароль обязателен",
   "password_invalid": "Неверный формат пароля",
   "password_min_length": "Пароль должен быть не менее 6 символов",
+  "change_password": "Изменить пароль",
+  "current_password": "Текущий пароль",
+  "new_password": "Новый пароль",
+  "confirm_password": "Подтвердите пароль",
+  "enter_current_password": "Введите текущий пароль",
+  "enter_new_password": "Введите новый пароль",
+  "enter_confirm_password": "Подтвердите пароль",
+  "passwords_not_match": "Пароли не совпадают",
+  "password_change_error": "Ошибка при изменении пароля!",
+  "password_change_success": "Пароль успешно изменен!",
+  "change": "Изменить",
 
   "personal_details": "Персональный данные",
   "settings": "Настройки"

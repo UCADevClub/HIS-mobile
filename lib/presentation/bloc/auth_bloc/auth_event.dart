@@ -4,9 +4,9 @@ part of 'auth_bloc.dart';
 abstract class AuthEvent {}
 
 class LoginRequested extends AuthEvent {
-  final AuthModel authModel;
+  final SignInEntity signInEntity;
 
-  LoginRequested(this.authModel);
+  LoginRequested(this.signInEntity);
 }
 
 class LogoutRequested extends AuthEvent {}

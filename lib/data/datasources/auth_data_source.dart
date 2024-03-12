@@ -1,10 +1,8 @@
+import 'package:his_mobile/data/models/sign_in_model.dart';
 import 'package:his_mobile/data/services/auth_service.dart';
 
 abstract class AuthDataSource {
-  Future<dynamic> signInWithEmailAndPassword({
-    required String email,
-    required String password,
-  });
+  Future<String> signInWithEmailAndPassword(SignInModel signInModel);
 
   Future<dynamic> forgotPassword({
     required String email,
@@ -19,14 +17,11 @@ class AuthDataSourceImpl implements AuthDataSource {
   AuthDataSourceImpl(this.authService);
 
   @override
-  Future signInWithEmailAndPassword({
-    required String email,
-    required String password,
-  }) {
+  Future<String> signInWithEmailAndPassword(SignInModel signInModel) {
     try {
       final response = authService.signInWithEmailAndPassword(
-        email: email,
-        password: password,
+        email: signInModel.email,
+        password: signInModel.password,
       );
       return response;
     } catch (e) {

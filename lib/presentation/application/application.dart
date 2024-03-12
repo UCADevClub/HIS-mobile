@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:his_mobile/core/di/dependency_injection.dart';
 import 'package:his_mobile/core/routes/app_router.dart';
 import 'package:his_mobile/core/styles/theme/app_theme.dart';
 import 'package:his_mobile/presentation/bloc/auth_bloc/auth_bloc.dart';
@@ -28,11 +29,11 @@ class _HisMobileState extends State<HisMobile> {
 
   @override
   Widget build(BuildContext context) {
-    final AppRouter appRouter = AppRouter();
+    final appRouter = sl<AppRouter>();
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
-          create: (BuildContext context) => AuthBloc(),
+          create: (BuildContext context) => sl<AuthBloc>(),
         ),
         BlocProvider<PatientInfoBloc>(
           create: (BuildContext context) => PatientInfoBloc(),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:his_mobile/core/extensions/context_extension.dart';
-import 'package:his_mobile/core/routes/app_router.gr.dart';
+import 'package:his_mobile/domain/entities/sign_in_entity.dart';
 import 'package:his_mobile/presentation/application/application.dart';
 import 'package:his_mobile/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'package:his_mobile/presentation/widgets/auth_widgets/details_line.dart';
@@ -27,8 +27,14 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          print('AuthBloc: ${state.status}');
+          if (state.status == AuthStatus.success) {
+            context.router.replaceNamed("/home");
+          }
+        },
         child: SafeArea(
           child: Form(
             key: loginKey,
@@ -67,9 +73,14 @@ class _AuthPageState extends State<AuthPage> {
                   title: context.i10n.enter,
                   onPressed: () {
                     if (loginKey.currentState!.validate()) {
-                      context.router.push(
-                        const HomeRoute(),
-                      );
+                      context.read<AuthBloc>().add(
+                            LoginRequested(
+                              SignInEntity(
+                                email: _loginController.text,
+                                password: _passwordController.text,
+                              ),
+                            ),
+                          );
                     }
                   },
                 ),

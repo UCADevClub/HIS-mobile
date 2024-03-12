@@ -5,12 +5,12 @@ part 'auth_model.g.dart';
 @JsonSerializable()
 class AuthModel {
   final String? token;
-  final String inn;
+  final String email;
   final String password;
 
   AuthModel({
     this.token,
-    required this.inn,
+    required this.email,
     required this.password,
   });
 

@@ -20,6 +20,10 @@ class AppRouter extends $AppRouter {
           page: AppDrawer.page,
         ),
         AutoRoute(
+          path: "/profile",
+          page: ProfileRoute.page,
+        ),
+        AutoRoute(
           path: "/change-password",
           page: ChangePasswordRoute.page,
         )

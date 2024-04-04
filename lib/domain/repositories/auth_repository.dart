@@ -11,5 +11,10 @@ abstract class AuthRepository {
     required String email,
   });
 
+  Future<Either<Failure, String>> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  });
+
   Future<Either<Failure, String>> logout();
 }

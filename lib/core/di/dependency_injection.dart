@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:his_mobile/core/constants/constants.dart';
 import 'package:his_mobile/core/network/network_info.dart';
 import 'package:his_mobile/core/routes/app_router.dart';
 import 'package:his_mobile/core/routes/auth_provider.dart';
@@ -16,7 +17,7 @@ final GetIt sl = GetIt.instance;
 
 Future<void> injectAllDependencies() async {
   sl.registerSingleton<String>(
-    "http://5.59.233.199:1337/",
+    Constants.baseUrl,
     instanceName: 'baseUrl',
   );
 

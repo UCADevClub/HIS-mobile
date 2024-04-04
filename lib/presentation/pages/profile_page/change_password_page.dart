@@ -5,15 +5,23 @@ import 'package:his_mobile/presentation/widgets/buttons/app_button.dart';
 import 'package:his_mobile/presentation/widgets/forms/custom_text_form_field.dart';
 
 @RoutePage()
-class ChangePasswordPage extends StatelessWidget {
+class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({super.key});
+
+  @override
+  State<ChangePasswordPage> createState() => _ChangePasswordPageState();
+}
+
+class _ChangePasswordPageState extends State<ChangePasswordPage> {
+  final existingPassword = TextEditingController();
+
+  final newPassword = TextEditingController();
+
+  final confirmPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final existingPassword = TextEditingController();
-    final newPassword = TextEditingController();
-    final confirmPassword = TextEditingController();
     //TODO: add snackbar and change password logic
     return Scaffold(
       appBar: AppBar(

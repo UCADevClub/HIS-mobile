@@ -76,6 +76,10 @@ class AppTheme {
       size: dimens.iconSize,
       color: _lightColors.grey,
     ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: _lightColors.primaryColor,
+      foregroundColor: _lightColors.white,
+    ),
   );
 
   static const _darkColors = appColorsDark;

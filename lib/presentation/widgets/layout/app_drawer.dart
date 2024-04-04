@@ -93,7 +93,9 @@ class _AppDrawerState extends State<AppDrawer> {
           AppTextButton(
             title: "Персональные данные",
             icon: Icons.person,
-            onPressed: () {},
+            onPressed: () {
+              context.router.pushNamed('/profile');
+            },
           ),
           AppTextButton(
             title: "Страхование",

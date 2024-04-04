@@ -1,11 +1,18 @@
-import 'package:his_mobile/data/models/sign_in_model.dart';
 import 'package:his_mobile/data/services/auth_service.dart';
 
 abstract class AuthDataSource {
-  Future<String> signInWithEmailAndPassword(SignInModel signInModel);
+  Future<String> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  });
 
   Future<dynamic> forgotPassword({
     required String email,
+  });
+
+  Future<dynamic> changePassword({
+    required String currentPassword,
+    required String newPassword,
   });
 
   Future<dynamic> logout();
@@ -17,11 +24,14 @@ class AuthDataSourceImpl implements AuthDataSource {
   AuthDataSourceImpl(this.authService);
 
   @override
-  Future<String> signInWithEmailAndPassword(SignInModel signInModel) {
+  Future<String> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
     try {
-      final response = authService.signInWithEmailAndPassword(
-        email: signInModel.email,
-        password: signInModel.password,
+      final response = await authService.signInWithEmailAndPassword(
+        email: email,
+        password: password,
       );
       return response;
     } catch (e) {
@@ -36,8 +46,28 @@ class AuthDataSourceImpl implements AuthDataSource {
   }
 
   @override
+  Future<dynamic> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    try {
+      final response = await authService.changePassword(
+        currentPassword: currentPassword,
+        newPassword: newPassword,
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
   Future logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
+    try {
+      final response = authService.logout();
+      return response;
+    } catch (e) {
+      rethrow;
+    }
   }
 }

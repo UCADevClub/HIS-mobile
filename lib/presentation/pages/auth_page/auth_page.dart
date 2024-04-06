@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:his_mobile/core/extensions/context_extension.dart';
+import 'package:his_mobile/core/mixin/dialog_helper.dart';
 import 'package:his_mobile/domain/entities/sign_in_entity.dart';
 import 'package:his_mobile/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'package:his_mobile/presentation/widgets/auth_widgets/login_field.dart';
@@ -16,7 +18,7 @@ class AuthPage extends StatefulWidget {
   State<AuthPage> createState() => _AuthPageState();
 }
 
-class _AuthPageState extends State<AuthPage> {
+class _AuthPageState extends State<AuthPage> with DialogHelper {
   final GlobalKey<FormState> loginKey = GlobalKey();
   final TextEditingController _loginController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -34,8 +36,20 @@ class _AuthPageState extends State<AuthPage> {
   Widget _buildBlocListener(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
+        if (state.status == AuthStatus.loading) {
+          EasyLoading.show(status: context.i10n.loading);
+        } else {
+          EasyLoading.dismiss();
+        }
+
         if (state.status == AuthStatus.success) {
           context.router.replaceNamed("/home");
+        } else if (state.status == AuthStatus.failure) {
+          showMessageDialog(
+            context: context,
+            message: state.status.toString(),
+            content: state.error,
+          );
         }
       },
       child: SafeArea(child: _buildForm(context)),

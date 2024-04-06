@@ -27,6 +27,7 @@
   "password_change_error": "Сыр сөздү өзгөртүүдө ката кетти!",
   "password_change_success": "Сыр сөздү өзгөртүү сӯттү!",
   "change": "Өзгөртүү",
+  "loading": "Жүктөп жатат...",
 
   "personal_details" : "Өздүк маалымат",
   "settings" : "Орнотуулар"

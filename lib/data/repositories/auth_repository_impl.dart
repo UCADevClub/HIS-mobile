@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:his_mobile/core/di/dependency_injection.dart';
+import 'package:his_mobile/core/error/auth_error.dart';
 import 'package:his_mobile/core/error/failures.dart';
 import 'package:his_mobile/core/network/network_info.dart';
 import 'package:his_mobile/data/datasources/auth_data_source.dart';
@@ -43,40 +44,40 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, String>> signInWithEmailAndPassword(
+  Future<Either<AuthError, String>> signInWithEmailAndPassword(
     SignInEntity signInEntity,
   ) async {
     final networkConnection = await _checkNetworkConnection();
     return networkConnection.fold(
-      (failure) => Left(failure),
+      (error) => Left(error),
       (_) => _attemptSignIn(signInEntity),
     );
   }
 
-  Future<Either<Failure, Unit>> _checkNetworkConnection() async {
+  Future<Either<AuthError, Unit>> _checkNetworkConnection() async {
     if (await networkInfo.isConnected) {
       return const Right(unit);
     } else {
-      return Left(ServerFailure());
+      return Left(AuthError('No internet connection'));
     }
   }
 
-  Future<Either<Failure, String>> _attemptSignIn(
+  Future<Either<AuthError, String>> _attemptSignIn(
       SignInEntity signInEntity) async {
     try {
-      final token = await authDataSource.signInWithEmailAndPassword(
+      final response = await authDataSource.signInWithEmailAndPassword(
         email: signInEntity.email,
         password: signInEntity.password,
       );
 
       // Add token to header
       sl.get<Dio>().options.headers.addAll({
-        'token': token,
+        'token': response,
       });
 
-      return Right(token);
+      return Right(response);
     } catch (e) {
-      return Left(ServerFailure());
+      return Left(AuthError(e.toString()));
     }
   }
 }

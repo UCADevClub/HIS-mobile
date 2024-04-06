@@ -27,6 +27,7 @@
   "password_change_error": "Ошибка при изменении пароля!",
   "password_change_success": "Пароль успешно изменен!",
   "change": "Изменить",
+  "loading": "Загрузка...",
 
   "personal_details": "Персональный данные",
   "settings": "Настройки"

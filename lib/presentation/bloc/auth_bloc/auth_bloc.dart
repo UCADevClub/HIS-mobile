@@ -25,35 +25,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(
-      const AuthState(status: AuthStatus.initial),
+      const AuthState(status: AuthStatus.loading),
     );
 
-    try {
-      final failureOrSignIn = await signInUseCase(event.signInEntity);
-      return failureOrSignIn.fold(
-        (failure) => emit(
-          AuthState(
-            status: AuthStatus.failure,
-            error: failure.toString(),
-          ),
-        ),
-        (signIn) {
-          emit(
-            const AuthState(
-              status: AuthStatus.success,
-              error: '',
-            ),
-          );
-        },
-      );
-    } catch (e) {
-      emit(
+    final failureOrSignIn = await signInUseCase(event.signInEntity);
+    return failureOrSignIn.fold(
+      (failure) => emit(
         AuthState(
           status: AuthStatus.failure,
-          error: e.toString(),
+          error: failure.message,
         ),
-      );
-    }
+      ),
+      (signIn) {
+        emit(
+          const AuthState(
+            status: AuthStatus.success,
+            error: '',
+          ),
+        );
+      },
+    );
   }
 
   Future<void> _onLogoutRequested(

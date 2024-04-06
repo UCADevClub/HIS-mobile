@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:his_mobile/core/di/dependency_injection.dart';
 import 'package:his_mobile/core/routes/app_router.dart';
@@ -47,6 +48,7 @@ class _HisMobileState extends State<HisMobile> {
         supportedLocales: AppLocalizations.supportedLocales,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         locale: _locale,
+        builder: EasyLoading.init(),
       ),
     );
   }

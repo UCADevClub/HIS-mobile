@@ -1,34 +1,53 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
-import 'package:his_mobile/core/di/dependency_injection.dart';
+import 'package:his_mobile/core/di/service_locator.dart';
+import 'package:his_mobile/domain/usecases/sign_in_usecase.dart';
 import 'package:his_mobile/presentation/bloc/auth_bloc/auth_bloc.dart';
 
 class AuthProvider extends ChangeNotifier {
   AuthState _state = const AuthState(status: AuthStatus.initial);
+  StreamSubscription? _authBlocSubscription;
+
+  AuthProvider() {
+    _initialize();
+  }
 
   AuthState get state => _state;
 
-  final isAuthenticated = sl<AuthBloc>().state.status == AuthStatus.success;
+  bool get isAuthenticated => _state.status == AuthStatus.success;
 
-  void _emit(AuthState newState) {
-    _state = newState;
-    notifyListeners();
+  void _initialize() {
+    final authBloc = sl<AuthBloc>();
+    _authBlocSubscription = authBloc.stream.listen((newState) {
+      _emit(newState);
+    });
+
+    _checkAuthorization();
   }
 
-  Future<void> login() async {
-    _emit(
-      const AuthState(
-        status: AuthStatus.success,
-      ),
+  void _checkAuthorization() {}
+
+  void _emit(AuthState newState) {
+    if (_state != newState) {
+      _state = newState;
+      notifyListeners();
+    }
+  }
+
+  Future<void> login(SignInParams signInParams) async {
+    sl<AuthBloc>().add(
+      LoginRequested(signInParams),
     );
-    notifyListeners();
   }
 
   void logout() {
-    _emit(
-      _state.copyWith(
-        status: AuthStatus.unauthenticated,
-      ),
-    );
-    notifyListeners();
+    sl<AuthBloc>().add(LogoutRequested());
+  }
+
+  @override
+  void dispose() {
+    _authBlocSubscription?.cancel();
+    super.dispose();
   }
 }

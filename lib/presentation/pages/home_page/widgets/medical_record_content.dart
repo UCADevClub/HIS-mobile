@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:his_mobile/core/mixin/dialog_helper.dart';
-import 'package:his_mobile/presentation/widgets/buttons/app_outlined_button.dart';
 import 'package:his_mobile/presentation/widgets/layout/swipe_bar.dart';
 
 String medicalReport = """
@@ -36,7 +34,7 @@ String medicalReport = """
 Врач: Dr. Smith
 """;
 
-class MedicalRecordContent extends StatelessWidget with DialogHelper {
+class MedicalRecordContent extends StatelessWidget {
   const MedicalRecordContent({super.key});
 
   @override
@@ -59,72 +57,9 @@ class MedicalRecordContent extends StatelessWidget with DialogHelper {
             child: TabBarView(
               controller: _tabController,
               children: [
-                // Expanded(
-                //   child: ListView(
-                //     children: [
-                //       InkWell(
-                //         onTap: () {
-                //           showMessageDialog(
-                //             message: 'Короткий Анализ',
-                //             content: 'Короткий анализ пациента',
-                //             context: context,
-                //           );
-                //         },
-                //         child: Container(
-                //           decoration: BoxDecoration(
-                //             borderRadius: BorderRadius.circular(30),
-                //             gradient: LinearGradient(
-                //               begin: Alignment.topLeft,
-                //               end: Alignment.bottomRight,
-                //               colors: [
-                //                 Colors.blue,
-                //                 Colors.yellow,
-                //               ],
-                //             ),
-                //           ),
-                //           child: Stack(
-                //             children: [
-                //               Positioned(
-                //                 top: 20,
-                //                 left: 20,
-                //                 child: Text(
-                //                   'Короткий Анализ',
-                //                   style: TextStyle(
-                //                     fontSize: 24,
-                //                     fontWeight: FontWeight.bold,
-                //                   ),
-                //                 ),
-                //               ),
-                //               Positioned(
-                //                 top: 30,
-                //                 right: 20,
-                //                 child: Icon(
-                //                   Icons.medical_services_rounded,
-                //                   color: Colors.white,
-                //                   size: 100,
-                //                 ),
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
                 ListTile(
                   title: Text('Короткий анализ'),
-                  onTap: () {
-                    showMessageDialog(
-                        message: 'Короткий Анализ',
-                        content: medicalReport,
-                        context: context,
-                        actions: [
-                          AppOutlinedButton(
-                            title: 'Скачать PDF',
-                            onPressed: () => print('Скачать PDF'),
-                          ),
-                        ]);
-                  },
+                  onTap: () {},
                 ),
                 ListTile(
                   title: Text('История болезни'),

@@ -14,10 +14,16 @@ class ChangePasswordPage extends StatefulWidget {
 
 class _ChangePasswordPageState extends State<ChangePasswordPage> {
   final existingPassword = TextEditingController();
-
   final newPassword = TextEditingController();
-
   final confirmPassword = TextEditingController();
+
+  @override
+  dispose() {
+    existingPassword.dispose();
+    newPassword.dispose();
+    confirmPassword.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

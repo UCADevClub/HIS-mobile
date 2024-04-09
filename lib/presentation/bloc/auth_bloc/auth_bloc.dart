@@ -3,7 +3,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:his_mobile/domain/entities/sign_in_entity.dart';
 import 'package:his_mobile/domain/usecases/sign_in_usecase.dart';
 import 'package:meta/meta.dart';
 
@@ -28,7 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       const AuthState(status: AuthStatus.loading),
     );
 
-    final failureOrSignIn = await signInUseCase(event.signInEntity);
+    final failureOrSignIn = await signInUseCase(event.signInParams);
     return failureOrSignIn.fold(
       (failure) => emit(
         AuthState(

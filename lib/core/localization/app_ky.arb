@@ -30,5 +30,9 @@
   "loading": "Жүктөп жатат...",
 
   "personal_details" : "Өздүк маалымат",
-  "settings" : "Орнотуулар"
+  "settings" : "Орнотуулар",
+
+  "download": "Жүктөө",
+  "appointment_to_doctor": "Докторго каалаганча",
+  "appointments" : "Каалаганчалар"
 }

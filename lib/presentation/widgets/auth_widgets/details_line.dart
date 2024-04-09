@@ -17,6 +17,7 @@ class DetailsLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -28,7 +29,7 @@ class DetailsLine extends StatelessWidget {
             ),
             Text(
               label,
-              style: Theme.of(context).textTheme.displaySmall,
+              style: theme.textTheme.displaySmall,
             ),
           ],
         ),
@@ -36,9 +37,9 @@ class DetailsLine extends StatelessWidget {
           onPressed: onTap,
           child: Text(
             context.i10n.forgot_password,
-            style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                  color: Theme.of(context).primaryColor,
-                ),
+            style: theme.textTheme.displaySmall!.copyWith(
+              color: theme.primaryColor,
+            ),
           ),
         ),
       ],

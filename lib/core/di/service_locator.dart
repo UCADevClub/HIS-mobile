@@ -100,6 +100,8 @@ void injectExternal() {
   );
 
   sl.registerLazySingleton(
-    () => AppRouter(),
+    () => AppRouter(
+      sl(),
+    ),
   );
 }

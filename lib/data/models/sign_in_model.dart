@@ -1,14 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:his_mobile/domain/entities/sign_in_entity.dart';
+import 'package:his_mobile/domain/usecases/sign_in_usecase.dart';
 
 part 'sign_in_model.g.dart';
 
 @JsonSerializable()
-class SignInModel extends SignInEntity {
+class SignInModel extends SignInParams {
   const SignInModel({
-    required String email,
-    required String password,
-  }) : super(email: email, password: password);
+    required super.email,
+    required super.password,
+  });
 
   factory SignInModel.fromJson(Map<String, dynamic> json) =>
       _$SignInModelFromJson(json);

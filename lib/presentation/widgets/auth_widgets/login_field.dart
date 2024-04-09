@@ -3,7 +3,7 @@ import 'package:his_mobile/core/extensions/context_extension.dart';
 import 'package:his_mobile/core/validation/form_validation.dart';
 import 'package:his_mobile/presentation/widgets/forms/custom_text_form_field.dart';
 
-class LoginField extends StatelessWidget {
+class LoginField extends StatefulWidget {
   const LoginField({
     super.key,
     required this.login,
@@ -14,26 +14,45 @@ class LoginField extends StatelessWidget {
   final TextEditingController password;
 
   @override
+  State<LoginField> createState() => _LoginFieldState();
+}
+
+class _LoginFieldState extends State<LoginField> {
+  late FormValidation validation;
+
+  @override
+  void initState() {
+    super.initState();
+    validation = FormValidation(context);
+  }
+
+  @override
+  void dispose() {
+    widget.login.dispose();
+    widget.password.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final validation = FormValidation(context);
     return Column(
       children: [
         CustomTextFormField(
           title: context.i10n.email,
           hintText: context.i10n.enter_email,
-          controller: login,
+          controller: widget.login,
           validator: (_) => validation.validateEmail(
-            login.text,
+            widget.login.text,
           ),
         ),
         const SizedBox(height: 20),
         CustomTextFormField(
           title: context.i10n.password,
           hintText: context.i10n.enter_password,
-          controller: password,
-          validator: (_) => validation.validatePassword(
-            password.text,
-          ),
+          controller: widget.password,
+          // validator: (_) => validation.validatePassword(
+          //   password.text,
+          // ),
           obscureText: true,
         ),
       ],

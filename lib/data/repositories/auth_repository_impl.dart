@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:his_mobile/core/di/dependency_injection.dart';
+import 'package:his_mobile/core/di/service_locator.dart';
 import 'package:his_mobile/core/error/auth_error.dart';
 import 'package:his_mobile/core/error/failures.dart';
 import 'package:his_mobile/core/network/network_info.dart';
 import 'package:his_mobile/data/datasources/auth_data_source.dart';
-import 'package:his_mobile/domain/entities/sign_in_entity.dart';
 import 'package:his_mobile/domain/repositories/auth_repository.dart';
+import 'package:his_mobile/domain/usecases/sign_in_usecase.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthDataSource authDataSource;
@@ -45,12 +45,12 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<AuthError, String>> signInWithEmailAndPassword(
-    SignInEntity signInEntity,
+    SignInParams signInParams,
   ) async {
     final networkConnection = await _checkNetworkConnection();
     return networkConnection.fold(
       (error) => Left(error),
-      (_) => _attemptSignIn(signInEntity),
+      (_) => _attemptSignIn(signInParams),
     );
   }
 
@@ -63,11 +63,11 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   Future<Either<AuthError, String>> _attemptSignIn(
-      SignInEntity signInEntity) async {
+      SignInParams signInParams) async {
     try {
       final response = await authDataSource.signInWithEmailAndPassword(
-        email: signInEntity.email,
-        password: signInEntity.password,
+        email: signInParams.email,
+        password: signInParams.password,
       );
 
       // Add token to header

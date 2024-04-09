@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:his_mobile/core/di/dependency_injection.dart';
+import 'package:his_mobile/core/di/service_locator.dart';
 import 'package:his_mobile/core/routes/app_router.dart';
+import 'package:his_mobile/core/routes/auth_provider.dart';
 import 'package:his_mobile/core/styles/theme/app_theme.dart';
 import 'package:his_mobile/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_bloc.dart';
@@ -20,6 +21,8 @@ class HisMobile extends StatefulWidget {
 }
 
 class _HisMobileState extends State<HisMobile> {
+  final appRouter = sl<AppRouter>();
+  final authProvider = sl<AuthProvider>();
   Locale? _locale;
 
   void setLocale(Locale locale) {
@@ -30,7 +33,6 @@ class _HisMobileState extends State<HisMobile> {
 
   @override
   Widget build(BuildContext context) {
-    final appRouter = sl<AppRouter>();
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
@@ -44,7 +46,9 @@ class _HisMobileState extends State<HisMobile> {
         title: 'His Mobile',
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-        routerConfig: appRouter.config(),
+        routerConfig: appRouter.config(
+          reevaluateListenable: authProvider,
+        ),
         supportedLocales: AppLocalizations.supportedLocales,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         locale: _locale,

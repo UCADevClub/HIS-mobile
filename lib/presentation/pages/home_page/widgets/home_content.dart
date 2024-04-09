@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
 import 'package:his_mobile/core/mixin/dialog_helper.dart';
 import 'package:his_mobile/presentation/widgets/buttons/app_outlined_button.dart';
 import 'package:his_mobile/presentation/widgets/home_widgets/content_box.dart';
@@ -26,6 +27,22 @@ String medicalPrescription = """
 class HomeContent extends StatelessWidget with DialogHelper {
   const HomeContent({super.key});
 
+  void _showPrescriptionDialog(BuildContext context) {
+    showMessageDialog(
+      context: context,
+      message: context.i10n.appointment_to_doctor,
+      content: medicalPrescription,
+      actions: [
+        AppOutlinedButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          title: context.i10n.download,
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -38,53 +55,40 @@ class HomeContent extends StatelessWidget with DialogHelper {
             left: width * 0.05,
             bottom: 10,
           ),
-          child: const Align(
+          child: Align(
             alignment: Alignment.topLeft,
-            child: Text('Записи'),
+            child: Text(context.i10n.appointments),
           ),
         ),
         ContentBox(
-          description: 'Записи на прием к врачу',
-          onTap: () => showMessageDialog(
-            context: context,
-            message: 'Запись на прием к врачу',
-            content: medicalPrescription,
-            actions: [
-              AppOutlinedButton(
-                onPressed: () {
-                  print('Скачать');
-                  Navigator.of(context).pop();
-                },
-                title: 'Скачать',
-              ),
-            ],
-          ),
+          description: context.i10n.appointment_to_doctor,
+          onTap: () => _showPrescriptionDialog(context),
         ),
         Padding(
           padding: EdgeInsets.only(
             left: width * 0.05,
             bottom: 10,
           ),
-          child: const Align(
+          child: Align(
             alignment: Alignment.topLeft,
-            child: Text('Записи'),
+            child: Text(context.i10n.appointments),
           ),
         ),
         ContentBox(
-          description: 'Записи на прием к врачу',
+          description: context.i10n.appointment_to_doctor,
         ),
         Padding(
           padding: EdgeInsets.only(
             left: width * 0.05,
             bottom: 10,
           ),
-          child: const Align(
+          child: Align(
             alignment: Alignment.topLeft,
-            child: Text('Записи'),
+            child: Text(context.i10n.appointments),
           ),
         ),
         ContentBox(
-          description: 'Записи на прием к врачу',
+          description: context.i10n.appointment_to_doctor,
         ),
       ],
     );

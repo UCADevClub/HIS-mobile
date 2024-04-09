@@ -28,24 +28,23 @@ mixin DialogHelper {
                   )
                 ],
           );
-        } else {
-          return AlertDialog(
-            key: key,
-            alignment: Alignment.center,
-            title: Text(message),
-            titleTextStyle: theme.textTheme.displayMedium,
-            content: Text(content),
-            contentTextStyle: theme.textTheme.headlineSmall,
-            actionsAlignment: MainAxisAlignment.center,
-            actions: actions ??
-                [
-                  AppOutlinedButton(
-                    onPressed: Navigator.of(dCtx).pop,
-                    title: "OK",
-                  )
-                ],
-          );
         }
+        return AlertDialog(
+          key: key,
+          alignment: Alignment.center,
+          title: Text(message),
+          titleTextStyle: theme.textTheme.displayMedium,
+          content: Text(content),
+          contentTextStyle: theme.textTheme.headlineSmall,
+          actionsAlignment: MainAxisAlignment.center,
+          actions: actions ??
+              [
+                AppOutlinedButton(
+                  onPressed: Navigator.of(dCtx).pop,
+                  title: "OK",
+                )
+              ],
+        );
       },
     );
   }

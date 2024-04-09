@@ -20,6 +20,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 1;
 
+  final PageController _pageController = PageController();
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,32 +36,31 @@ class _HomePageState extends State<HomePage> {
         scaffoldKey: _scaffoldKey,
         title: 'Home',
       ),
-      body: Center(
-        child: _getBody(selectedIndex),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        children: const [
+          BookingContent(),
+          HomeContent(),
+          MedicalRecordContent(),
+        ],
       ),
       bottomNavigationBar: AppBottomBar(
         selectedIndex: selectedIndex,
         onItemTapped: (int index) {
-          setState(() {
-            selectedIndex = index;
-          });
+          _pageController.animateToPage(
+            index,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+          );
         },
       ),
       drawer: const AppDrawer(),
       backgroundColor: Theme.of(context).colorScheme.background,
     );
-  }
-
-  Widget _getBody(int index) {
-    switch (index) {
-      case 0:
-        return const BookingContent();
-      case 1:
-        return const HomeContent();
-      case 2:
-        return const MedicalRecordContent();
-      default:
-        return const HomeContent();
-    }
   }
 }

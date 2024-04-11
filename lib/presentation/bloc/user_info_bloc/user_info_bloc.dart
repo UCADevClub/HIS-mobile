@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:his_mobile/domain/entities/user_entities/user_entity.dart';
+import 'package:his_mobile/domain/entities/user_entity.dart';
 import 'package:meta/meta.dart';
 
 part 'user_info_event.dart';

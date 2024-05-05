@@ -1,4 +1,4 @@
-import 'package:his_mobile/data/services/auth_service.dart';
+import 'package:his_mobile/data/datasources/remote/auth_service.dart';
 
 abstract class AuthDataSource {
   Future<String> signInWithEmailAndPassword({

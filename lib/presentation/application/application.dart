@@ -21,8 +21,9 @@ class HisMobile extends StatefulWidget {
 }
 
 class _HisMobileState extends State<HisMobile> {
-  final appRouter = sl<AppRouter>();
   final authProvider = sl<AuthProvider>();
+  final appRouter = sl<AppRouter>();
+
   Locale? _locale;
 
   void setLocale(Locale locale) {
@@ -46,6 +47,7 @@ class _HisMobileState extends State<HisMobile> {
         title: 'His Mobile',
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
+        // route stack will be re-evaluated when authProvider changes
         routerConfig: appRouter.config(
           reevaluateListenable: authProvider,
         ),

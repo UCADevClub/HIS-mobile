@@ -6,8 +6,8 @@ import 'package:his_mobile/core/routes/app_router.dart';
 import 'package:his_mobile/core/routes/auth_provider.dart';
 import 'package:his_mobile/core/routes/guards/auth_guard.dart';
 import 'package:his_mobile/data/datasources/auth_data_source.dart';
+import 'package:his_mobile/data/datasources/remote/auth_service.dart';
 import 'package:his_mobile/data/repositories/auth_repository_impl.dart';
-import 'package:his_mobile/data/services/auth_service.dart';
 import 'package:his_mobile/domain/repositories/auth_repository.dart';
 import 'package:his_mobile/domain/usecases/sign_in_usecase.dart';
 import 'package:his_mobile/presentation/bloc/auth_bloc/auth_bloc.dart';
@@ -85,23 +85,25 @@ void injectCore() {
 }
 
 void injectExternal() {
-  sl.registerLazySingleton(
+  sl.registerLazySingleton<AuthService>(
     () => AuthService(
       sl<Dio>(),
     ),
   );
 
-  sl.registerLazySingleton(
-    () => AuthGuard(sl()),
-  );
-
-  sl.registerLazySingleton(
+  sl.registerLazySingleton<AuthProvider>(
     () => AuthProvider(),
   );
 
-  sl.registerLazySingleton(
+  sl.registerLazySingleton<AuthGuard>(
+    () => AuthGuard(
+      sl<AuthProvider>(),
+    ),
+  );
+
+  sl.registerLazySingleton<AppRouter>(
     () => AppRouter(
-      sl(),
+      sl<AuthGuard>(),
     ),
   );
 }

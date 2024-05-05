@@ -1,4 +1,4 @@
-import 'package:his_mobile/data/services/user_service.dart';
+import 'package:his_mobile/data/datasources/remote/user_service.dart';
 
 abstract class UserDataSource {
   Future<dynamic> getUserDetails();

@@ -2,8 +2,8 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_bloc.dart';
-import 'package:his_mobile/presentation/widgets/forms/drop_down_field.dart';
-import 'package:his_mobile/presentation/widgets/forms/editable_field.dart';
+import 'package:his_mobile/presentation/widgets/profile/emergency_contact.dart';
+import 'package:his_mobile/presentation/widgets/profile/personal_information.dart';
 
 @RoutePage()
 class ProfilePage extends StatefulWidget {
@@ -65,105 +65,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   size: 60,
                 ),
               ),
-              DropDownField(
-                title: 'Personal Information',
-                children: [
-                  EditableField(
-                    controller: _innController,
-                    title: 'ИНН',
-                    isEditable: false,
-                  ),
-                  EditableField(
-                    controller: _birthDateController,
-                    title: 'Дата Рождения',
-                    isEditable: false,
-                  ),
-                  EditableField(
-                    controller: _nameController,
-                    title: 'Имя',
-                  ),
-                  EditableField(
-                    controller: _surnameController,
-                    title: 'Фамилия',
-                  ),
-                  EditableField(
-                    controller: _patronymicController,
-                    title: 'Отчество',
-                  ),
-                  EditableField(
-                    controller: _genderController,
-                    title: 'Пол',
-                  ),
-                  EditableField(
-                    controller: _maritalStatusController,
-                    title: 'Семейное положение',
-                  ),
-                  EditableField(
-                    controller: _emailController,
-                    title: 'Электроная почта',
-                  ),
-                  EditableField(
-                    controller: _phoneNumberController,
-                    title: 'Номер Телефона',
-                  ),
-                ],
-              ),
-              // DropDownField(
-              //   title: 'Address',
-              //   children: [
-              //     EditableField(
-              //       title: 'Страна',
-              //       value: 'Кыргызстан',
-              //     ),
-              //     EditableField(
-              //       title: 'Область',
-              //       value: 'Чуйская',
-              //     ),
-              //     EditableField(
-              //       title: 'Город/Село',
-              //       value: 'Бишкек',
-              //     ),
-              //     EditableField(
-              //       title: 'Улица',
-              //       value: 'Токтогула',
-              //       isEditable: false,
-              //     ),
-              //     EditableField(
-              //       title: 'Дом',
-              //       value: '123',
-              //       isEditable: false,
-              //     ),
-              //     EditableField(
-              //       title: 'Квартира',
-              //       value: '123',
-              //     ),
-              //     EditableField(
-              //       title: 'Почтовый Индекс',
-              //       value: '720000',
-              //     ),
-              //   ],
-              // ),
-              // DropDownField(
-              //   title: 'Экстренные контакты (1)',
-              //   children: [
-              //     EditableField(
-              //       title: 'Имя',
-              //       value: 'Рамиль',
-              //     ),
-              //     EditableField(
-              //       title: 'Фамилия',
-              //       value: 'Салихар',
-              //     ),
-              //     EditableField(
-              //       title: 'Отчество',
-              //       value: 'Шамильевич',
-              //     ),
-              //     EditableField(
-              //       title: 'Номер Телефона',
-              //       value: '+996 555 555 555',
-              //     ),
-              //   ],
-              // ),
+              const PersonalInformation(),
+              const EmergencyContact()
             ],
           )),
           floatingActionButton: FloatingActionButton(

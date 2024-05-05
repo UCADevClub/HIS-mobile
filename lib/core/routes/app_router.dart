@@ -10,13 +10,14 @@ class AppRouter extends $AppRouter {
   AppRouter(this.authGuard);
 
   @override
-  RouteType get defaultRouteType => const RouteType.custom();
+  RouteType get defaultRouteType => const RouteType.material();
 
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
           path: "/auth",
           page: AuthRoute.page,
+          guards: [authGuard],
           // initial: true,
         ),
         AutoRoute(
@@ -36,6 +37,10 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           path: "/change-password",
           page: ChangePasswordRoute.page,
-        )
+        ),
+        AutoRoute(
+          path: "/medical-data",
+          page: MedicalDataRoute.page,
+        ),
       ];
 }

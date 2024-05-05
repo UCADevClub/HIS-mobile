@@ -27,7 +27,6 @@ class _AuthPageState extends State<AuthPage> with DialogHelper {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: _buildBlocListener(context),
@@ -37,16 +36,12 @@ class _AuthPageState extends State<AuthPage> with DialogHelper {
   Widget _buildBlocListener(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
+        print('State: ${state.status}');
         if (state.status == AuthStatus.loading) {
           EasyLoading.show(status: context.i10n.loading);
         } else {
           EasyLoading.dismiss();
         }
-
-        // if (state.status == AuthStatus.success) {
-        //   context.router.replaceNamed("/home");
-        // } else
-
         if (state.status == AuthStatus.failure) {
           showMessageDialog(
             context: context,

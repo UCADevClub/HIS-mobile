@@ -15,7 +15,6 @@ class AppDrawer extends StatefulWidget {
 class _AppDrawerState extends State<AppDrawer> {
   @override
   Widget build(BuildContext context) {
-    var current = 0;
     return Drawer(
       child: Column(
         children: [
@@ -26,29 +25,40 @@ class _AppDrawerState extends State<AppDrawer> {
                 color: Theme.of(context).primaryColor,
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Expanded(
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.grey,
-                        shape: BoxShape.circle,
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.grey,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Icon(
+                        Icons.person,
+                        size: 70,
+                        color: Colors.white,
                       ),
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
-                    'Ramil Salihar',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
+                  const Center(
+                    child: Text(
+                      'Ramil Salihar',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
-                    'ramilsalihar@gmail.com',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
+                  const Center(
+                    child: Text(
+                      'ramilsalihar@gmail.com',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -56,45 +66,18 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
             ),
           ),
-          // AnimatedToggleSwitch<int>.size(
-          //   textDirection: TextDirection.rtl,
-          //   current: current,
-          //   values: const [0, 1],
-          //   iconOpacity: 0.2,
-          //   indicatorSize: const Size.fromWidth(100),
-          //   iconBuilder: (index) => index == 0
-          //       ? const Icon(
-          //           Icons.home,
-          //           size: 30,
-          //           color: Colors.white,
-          //         )
-          //       : const Icon(
-          //           Icons.settings,
-          //           size: 30,
-          //           color: Colors.white,
-          //         ),
-          //   borderWidth: 4.0,
-          //   iconAnimationType: AnimationType.onHover,
-          //   style: ToggleStyle(
-          //     borderColor: Colors.transparent,
-          //     borderRadius: BorderRadius.circular(10.0),
-          //     boxShadow: [
-          //       const BoxShadow(
-          //         color: Colors.black26,
-          //         spreadRadius: 1,
-          //         blurRadius: 2,
-          //         offset: Offset(0, 1.5),
-          //       ),
-          //     ],
-          //   ),
-          //   onChanged: (int i) => setState(() => current = i),
-          //   onTap: (i) => print('Tapped on $i'),
-          // ),
           AppTextButton(
             title: "Персональные данные",
             icon: Icons.person,
             onPressed: () {
               context.router.pushNamed('/profile');
+            },
+          ),
+          AppTextButton(
+            title: "Медицинские данные",
+            icon: Icons.medical_information_outlined,
+            onPressed: () {
+              context.router.pushNamed('/medical-data');
             },
           ),
           AppTextButton(

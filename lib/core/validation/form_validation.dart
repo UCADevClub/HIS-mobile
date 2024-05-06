@@ -8,7 +8,7 @@ class FormValidation {
 
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return context.i10n.email_required;
+      return context.l10n.email_required;
     }
 
     // Regular expression for basic email validation
@@ -17,7 +17,7 @@ class FormValidation {
     );
 
     if (!emailRegex.hasMatch(value)) {
-      return context.i10n.email_invalid;
+      return context.l10n.email_invalid;
     }
 
     return null;
@@ -25,9 +25,9 @@ class FormValidation {
 
   String? validatePassword(String value) {
     if (value.isEmpty) {
-      return context.i10n.password_required;
+      return context.l10n.password_required;
     } else if (value.length < 6) {
-      return context.i10n.password_min_length;
+      return context.l10n.password_min_length;
     }
     return null;
   }

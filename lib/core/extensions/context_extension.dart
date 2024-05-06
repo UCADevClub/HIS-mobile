@@ -16,7 +16,7 @@ extension ContextExtension on BuildContext {
   bool get isLight => Theme.of(this).brightness == Brightness.light;
 
   // Localization
-  AppLocalizations get i10n => AppLocalizations.of(this)!;
+  AppLocalizations get l10n => AppLocalizations.of(this)!;
 
   // Dimensions
   Dimens get dimens => Dimens();

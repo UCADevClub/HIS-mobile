@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
 import 'package:his_mobile/presentation/application/application.dart';
 import 'package:his_mobile/presentation/widgets/buttons/app_button.dart';
 import 'package:his_mobile/presentation/widgets/buttons/app_text_button.dart';
+import 'package:his_mobile/presentation/widgets/buttons/change_language_button.dart';
 
 @RoutePage()
 class AppDrawer extends StatefulWidget {
@@ -66,34 +68,35 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
             ),
           ),
+          const ChangeLanguageButton(),
           AppTextButton(
-            title: "Персональные данные",
+            title: context.l10n.personal_details,
             icon: Icons.person,
             onPressed: () {
               context.router.pushNamed('/profile');
             },
           ),
           AppTextButton(
-            title: "Медицинские данные",
+            title: context.l10n.medical_data,
             icon: Icons.medical_information_outlined,
             onPressed: () {
               context.router.pushNamed('/medical-data');
             },
           ),
           AppTextButton(
-            title: "Страхование",
+            title: context.l10n.insurance,
             icon: Icons.safety_check,
             onPressed: () {},
           ),
           AppTextButton(
-            title: "Изменить Пароль",
+            title: context.l10n.change_password,
             icon: Icons.lock,
             onPressed: () {
               context.router.pushNamed('/change-password');
             },
           ),
           AppTextButton(
-            title: "Настройки",
+            title: context.l10n.settings,
             icon: Icons.settings,
             onPressed: () {},
           ),
@@ -106,7 +109,7 @@ class _AppDrawerState extends State<AppDrawer> {
               right: 10,
             ),
             child: AppButton(
-              title: 'Logout',
+              title: context.l10n.logout,
               onPressed: () {
                 HisMobile.of(context).setLocale(const Locale('ru'));
               },

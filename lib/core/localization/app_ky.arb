@@ -34,5 +34,13 @@
 
   "download": "Жүктөө",
   "appointment_to_doctor": "Докторго каалаганча",
-  "appointments" : "Каалаганчалар"
+  "appointments" : "Каалаганчалар",
+
+  "medical_data": "Тибби маалымат",
+  "insurance": "Страхование",
+
+  "russian": "Орусча",
+  "english": "Англисче",
+  "kyrgyz": "Кыргызча",
+  "language": "Тил"
 }

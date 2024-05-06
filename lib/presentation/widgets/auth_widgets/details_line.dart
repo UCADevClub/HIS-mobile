@@ -36,7 +36,7 @@ class DetailsLine extends StatelessWidget {
         TextButton(
           onPressed: onTap,
           child: Text(
-            context.i10n.forgot_password,
+            context.l10n.forgot_password,
             style: theme.textTheme.displaySmall!.copyWith(
               color: theme.primaryColor,
             ),

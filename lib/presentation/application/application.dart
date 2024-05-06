@@ -24,7 +24,7 @@ class _HisMobileState extends State<HisMobile> {
   final authProvider = sl<AuthProvider>();
   final appRouter = sl<AppRouter>();
 
-  Locale? _locale;
+  Locale _locale = const Locale('ru', 'RU');
 
   void setLocale(Locale locale) {
     setState(() {

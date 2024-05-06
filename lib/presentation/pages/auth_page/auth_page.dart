@@ -38,7 +38,7 @@ class _AuthPageState extends State<AuthPage> with DialogHelper {
       listener: (context, state) {
         print('State: ${state.status}');
         if (state.status == AuthStatus.loading) {
-          EasyLoading.show(status: context.i10n.loading);
+          EasyLoading.show(status: context.l10n.loading);
         } else {
           EasyLoading.dismiss();
         }
@@ -67,7 +67,7 @@ class _AuthPageState extends State<AuthPage> with DialogHelper {
               children: [
                 Flexible(
                   child: Text(
-                    context.i10n.welcome,
+                    context.l10n.welcome,
                     style: Theme.of(context).textTheme.displayLarge,
                   ),
                 ),
@@ -107,7 +107,7 @@ class _AuthPageState extends State<AuthPage> with DialogHelper {
                 Flexible(
                   flex: 0,
                   child: AppButton(
-                    title: context.i10n.enter,
+                    title: context.l10n.enter,
                     onPressed: () {
                       if (loginKey.currentState!.validate()) {
                         context.read<AuthBloc>().add(

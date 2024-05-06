@@ -38,8 +38,8 @@ class _LoginFieldState extends State<LoginField> {
     return Column(
       children: [
         CustomTextFormField(
-          title: context.i10n.email,
-          hintText: context.i10n.enter_email,
+          title: context.l10n.email,
+          hintText: context.l10n.enter_email,
           controller: widget.login,
           validator: (_) => validation.validateEmail(
             widget.login.text,
@@ -47,8 +47,8 @@ class _LoginFieldState extends State<LoginField> {
         ),
         const SizedBox(height: 20),
         CustomTextFormField(
-          title: context.i10n.password,
-          hintText: context.i10n.enter_password,
+          title: context.l10n.password,
+          hintText: context.l10n.enter_password,
           controller: widget.password,
           // validator: (_) => validation.validatePassword(
           //   password.text,

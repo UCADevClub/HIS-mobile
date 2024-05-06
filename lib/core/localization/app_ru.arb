@@ -34,5 +34,13 @@
 
   "download": "Скачать",
   "appointment_to_doctor": "Запись на прием к врачу",
-  "appointments" : "Записи"
+  "appointments" : "Записи",
+
+  "medical_data": "Медицинские данные",
+  "insurance": "Страхование",
+
+  "russian": "Русский",
+  "english": "Английский",
+  "kyrgyz": "Кыргызский",
+  "language": "Язык"
 }

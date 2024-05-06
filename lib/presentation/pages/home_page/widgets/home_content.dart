@@ -30,14 +30,14 @@ class HomeContent extends StatelessWidget with DialogHelper {
   void _showPrescriptionDialog(BuildContext context) {
     showMessageDialog(
       context: context,
-      message: context.i10n.appointment_to_doctor,
+      message: context.l10n.appointment_to_doctor,
       content: medicalPrescription,
       actions: [
         AppOutlinedButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-          title: context.i10n.download,
+          title: context.l10n.download,
         ),
       ],
     );
@@ -57,11 +57,11 @@ class HomeContent extends StatelessWidget with DialogHelper {
           ),
           child: Align(
             alignment: Alignment.topLeft,
-            child: Text(context.i10n.appointments),
+            child: Text(context.l10n.appointments),
           ),
         ),
         ContentBox(
-          description: context.i10n.appointment_to_doctor,
+          description: context.l10n.appointment_to_doctor,
           onTap: () => _showPrescriptionDialog(context),
         ),
         Padding(
@@ -71,11 +71,11 @@ class HomeContent extends StatelessWidget with DialogHelper {
           ),
           child: Align(
             alignment: Alignment.topLeft,
-            child: Text(context.i10n.appointments),
+            child: Text(context.l10n.appointments),
           ),
         ),
         ContentBox(
-          description: context.i10n.appointment_to_doctor,
+          description: context.l10n.appointment_to_doctor,
         ),
         Padding(
           padding: EdgeInsets.only(
@@ -84,11 +84,11 @@ class HomeContent extends StatelessWidget with DialogHelper {
           ),
           child: Align(
             alignment: Alignment.topLeft,
-            child: Text(context.i10n.appointments),
+            child: Text(context.l10n.appointments),
           ),
         ),
         ContentBox(
-          description: context.i10n.appointment_to_doctor,
+          description: context.l10n.appointment_to_doctor,
         ),
       ],
     );

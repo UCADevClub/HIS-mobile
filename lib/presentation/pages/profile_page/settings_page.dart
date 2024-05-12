@@ -31,7 +31,7 @@ class _SettingsPageState extends State<SettingsPage> with DialogHelper {
       ),
       body: SettingsList(
         lightTheme:
-            SettingsThemeData(settingsListBackground: Colors.transparent),
+            const SettingsThemeData(settingsListBackground: Colors.transparent),
         sections: [
           SettingsSection(
             title: Text(context.l10n.general,

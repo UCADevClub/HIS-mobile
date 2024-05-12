@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
 import 'package:his_mobile/presentation/widgets/layout/swipe_bar.dart';
 
 String medicalReport = """
@@ -58,11 +59,11 @@ class MedicalRecordContent extends StatelessWidget {
               controller: _tabController,
               children: [
                 ListTile(
-                  title: Text('Короткий анализ'),
+                  title: Text(context.l10n.short_analysis),
                   onTap: () {},
                 ),
                 ListTile(
-                  title: Text('История болезни'),
+                  title: Text(context.l10n.illness_history),
                   onTap: () {
                     print('История болезни');
                   },

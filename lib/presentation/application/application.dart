@@ -10,7 +10,12 @@ import 'package:his_mobile/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_bloc.dart';
 
 class HisMobile extends StatefulWidget {
-  const HisMobile({super.key});
+  const HisMobile({
+    super.key,
+    required this.initialLanguageCode,
+  });
+
+  final String initialLanguageCode;
 
   @override
   State<HisMobile> createState() => _HisMobileState();
@@ -30,6 +35,12 @@ class _HisMobileState extends State<HisMobile> {
     setState(() {
       _locale = locale;
     });
+  }
+
+  @override
+  initState() {
+    _locale = Locale(widget.initialLanguageCode, '');
+    super.initState();
   }
 
   @override

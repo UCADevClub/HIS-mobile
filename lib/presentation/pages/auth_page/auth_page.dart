@@ -23,8 +23,6 @@ class _AuthPageState extends State<AuthPage> with DialogHelper {
   final TextEditingController _loginController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  // bool _checked = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +34,6 @@ class _AuthPageState extends State<AuthPage> with DialogHelper {
   Widget _buildBlocListener(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        print('State: ${state.status}');
         if (state.status == AuthStatus.loading) {
           EasyLoading.show(status: context.l10n.loading);
         } else {

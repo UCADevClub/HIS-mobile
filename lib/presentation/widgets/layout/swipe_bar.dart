@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
 
 class SwipeBar extends StatelessWidget {
   const SwipeBar({
@@ -33,14 +34,10 @@ class SwipeBar extends StatelessWidget {
           ),
           tabs: [
             Tab(
-              child: Text(
-                'Анализ',
-              ),
+              child: Text(context.l10n.analysis),
             ),
             Tab(
-              child: Text(
-                'История',
-              ),
+              child: Text(context.l10n.history),
             ),
           ],
         ),

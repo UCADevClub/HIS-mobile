@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
 import 'package:his_mobile/presentation/widgets/forms/editable_field.dart';
 
 @RoutePage()
@@ -24,7 +25,7 @@ class _MedicalDataPageState extends State<MedicalDataPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Medical Data'),
+        title: Text(context.l10n.medical_data),
         centerTitle: true,
         backgroundColor: Colors.transparent,
       ),
@@ -32,37 +33,37 @@ class _MedicalDataPageState extends State<MedicalDataPage> {
         child: Column(
           children: [
             EditableField(
-              title: 'Группа Крови',
+              title: context.l10n.blood_type,
               controller: _bloodGroupController,
               isEditable: false,
             ),
             _lineBreak(),
             EditableField(
-              title: 'Очки для Зрения',
+              title: context.l10n.glasses_for_vision,
               controller: _bloodGroupController,
               isEditable: false,
             ),
             _lineBreak(),
             EditableField(
-              title: 'Аллергии',
+              title: context.l10n.allergies,
               controller: _bloodGroupController,
               isEditable: false,
             ),
             _lineBreak(),
             EditableField(
-              title: 'Вакцины',
+              title: context.l10n.vaccinations,
               controller: _bloodGroupController,
               isEditable: false,
             ),
             _lineBreak(),
             EditableField(
-              title: 'Принимаемые лекарства',
+              title: context.l10n.taking_medications,
               controller: _bloodGroupController,
               isEditable: false,
             ),
             _lineBreak(),
             EditableField(
-              title: 'Медицинское состояние',
+              title: context.l10n.medical_condition,
               controller: _bloodGroupController,
               isEditable: false,
             ),

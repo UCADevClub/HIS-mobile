@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
 import 'package:his_mobile/presentation/widgets/forms/drop_down_field.dart';
 import 'package:his_mobile/presentation/widgets/forms/editable_field.dart';
 
@@ -23,7 +24,15 @@ class _PersonalInformationState extends State<PersonalInformation> {
 
   @override
   void initState() {
-    _nameController.text;
+    _nameController.text = "Рамиль";
+    _surnameController.text = "Салихар";
+    _patronymicController.text = "Ринатович";
+    _innController.text = "123456789012";
+    _birthDateController.text = "01.12.1233";
+    _genderController.text = "Мужской";
+    _maritalStatusController.text = "Женат";
+    _emailController.text = "example@gmail.com";
+    _phoneNumberController.text = "+7 999 999 99 99";
     super.initState();
   }
 
@@ -36,45 +45,45 @@ class _PersonalInformationState extends State<PersonalInformation> {
   @override
   Widget build(BuildContext context) {
     return DropDownField(
-      title: 'Personal Information',
+      title: context.l10n.personal_information,
       children: [
         EditableField(
           controller: _innController,
-          title: 'ИНН',
+          title: context.l10n.inn,
           isEditable: false,
         ),
         EditableField(
           controller: _birthDateController,
-          title: 'Дата Рождения',
+          title: context.l10n.date_of_birth,
           isEditable: false,
         ),
         EditableField(
           controller: _nameController,
-          title: 'Имя',
+          title: context.l10n.name,
         ),
         EditableField(
           controller: _surnameController,
-          title: 'Фамилия',
+          title: context.l10n.surname,
         ),
         EditableField(
           controller: _patronymicController,
-          title: 'Отчество',
+          title: context.l10n.patronymic,
         ),
         EditableField(
           controller: _genderController,
-          title: 'Пол',
+          title: context.l10n.gender,
         ),
         EditableField(
           controller: _maritalStatusController,
-          title: 'Семейное положение',
+          title: context.l10n.marital_status,
         ),
         EditableField(
           controller: _emailController,
-          title: 'Электроная почта',
+          title: context.l10n.email,
         ),
         EditableField(
           controller: _phoneNumberController,
-          title: 'Номер Телефона',
+          title: context.l10n.phone_number,
         ),
       ],
     );

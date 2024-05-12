@@ -29,18 +29,43 @@
   "change": "Изменить",
   "loading": "Загрузка...",
 
-  "personal_details": "Персональный данные",
+  "personal_information": "Персональный данные",
   "settings": "Настройки",
+  "medical_data": "Медицинские данные",
+  "insurance": "Страхование",
+  "emergency_contact" : "Экстренные контакты",
+
+  "name": "Имя",
+  "surname": "Фамилия",
+  "patronymic": "Отчество",
+  "phone_number": "Номер телефона",
+  "date_of_birth": "Дата рождения",
+  "inn": "ИНН",
+  "gender" : "Пол",
+  "marital_status" : "Семейное положение",
 
   "download": "Скачать",
   "appointment_to_doctor": "Запись на прием к врачу",
   "appointments" : "Записи",
 
-  "medical_data": "Медицинские данные",
-  "insurance": "Страхование",
-
   "russian": "Русский",
   "english": "Английский",
   "kyrgyz": "Кыргызский",
-  "language": "Язык"
+  "language": "Язык",
+
+  "home" : "Главная",
+  "booking" : "Запись",
+
+  "short_analysis" : "Краткий анализ",
+  "illness_history" : "История болезни",
+
+  "blood_type" : "Группа крови",
+  "glasses_for_vision" : "Очки для зрения",
+  "allergies" : "Аллергии",
+  "vaccinations" : "Вакцинации",
+  "taking_medications" : "Принимаемые лекарства",
+  "medical_condition" : "Медицинское состояние",
+
+  "analysis" : "Анализ",
+  "history" : "История"
 }

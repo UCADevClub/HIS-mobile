@@ -1,6 +1,15 @@
-import 'package:flag/flag.dart';
+import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:his_mobile/core/extensions/context_extension.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class Language {
+  final String code;
+  final String countryCode;
+  final String name;
+
+  Language(this.code, this.countryCode, this.name);
+}
 
 class ChangeLanguageButton extends StatefulWidget {
   const ChangeLanguageButton({super.key});
@@ -10,80 +19,94 @@ class ChangeLanguageButton extends StatefulWidget {
 }
 
 class _ChangeLanguageButtonState extends State<ChangeLanguageButton> {
-  String dropdownValue = 'Russian';
+  String dropdownValue = 'ru';
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    super.initState();
+    loadLanguagePreference().then((language) {
       setState(() {
-        String languageCode = Localizations.localeOf(context).languageCode;
-        String language = languageCodes[languageCode] ?? 'Russian';
-
         dropdownValue = language;
       });
     });
-    super.initState();
   }
 
-  //TODO: Add localization to this
-  Map<String, String> languageCodes = {
-    'us': 'English',
-    'ru': 'Russian',
-    'kg': 'Kyrgyz',
-  };
+  Future<void> saveLanguagePreference(String languageCode) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('languageCode', languageCode);
+  }
 
-  void changeLanguage(String languageCode) {
-    Locale locale;
-    switch (languageCode) {
-      case 'English':
-        locale = const Locale('en', 'US');
-        break;
-      case 'Russian':
-        locale = const Locale('ru', 'RU');
-        break;
-      case 'Kyrgyz':
-        locale = const Locale('ky', 'KG');
-        break;
-      default:
-        locale = Locale('en', 'US');
-    }
+  Future<String> loadLanguagePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? languageCode = prefs.getString('languageCode');
+    return languageCode ?? 'ru';
+  }
+
+  void changeLanguage(String languageCode, BuildContext context) {
+    Map<String, Locale> languageCodeToLocale = {
+      'en': const Locale('en', 'US'),
+      'ru': const Locale('ru', 'RU'),
+      'ky': const Locale('ky', 'KG'),
+    };
+
+    dropdownValue = languageCode;
+
+    Locale locale = languageCodeToLocale[languageCode]!;
     context.setLocale(locale);
+    saveLanguagePreference(languageCode);
   }
 
   @override
   Widget build(BuildContext context) {
+    List<Language> languages = [
+      Language('en', 'us', context.l10n.english),
+      Language('ru', 'ru', context.l10n.russian),
+      Language('ky', 'kg', context.l10n.kyrgyz),
+    ];
     final theme = Theme.of(context);
-    return DropdownButtonHideUnderline(
-      child: DropdownButton<String>(
-        value: dropdownValue,
-        iconSize: 0,
-        elevation: 16,
-        style: theme.textTheme.headlineSmall,
-        onChanged: (String? newLanguage) {
-          setState(() {
-            dropdownValue = newLanguage!;
-            changeLanguage(newLanguage);
-          });
-        },
-        items: languageCodes.entries.map<DropdownMenuItem<String>>((entry) {
-          String language = entry.value;
-          String countryCode = entry.key;
-          return DropdownMenuItem<String>(
-            value: language,
-            child: Row(
-              children: <Widget>[
-                Flag.fromString(
-                  countryCode,
-                  height: 20,
-                  width: 20,
-                ),
-                const SizedBox(width: 8),
-                Text(language),
-              ],
-            ),
-          );
-        }).toList(),
+    return DropdownButton<String>(
+      hint: Row(
+        children: <Widget>[
+          CountryFlag.fromCountryCode(
+            languages
+                .firstWhere((lang) => lang.code == dropdownValue)
+                .countryCode,
+            height: 20,
+            width: 20,
+          ),
+          const SizedBox(width: 8),
+          Text(languages.firstWhere((lang) => lang.code == dropdownValue).name)
+        ],
       ),
+      iconSize: 0,
+      elevation: 16,
+      style: theme.textTheme.headlineSmall,
+      onChanged: (String? newLanguage) {
+        setState(() {
+          dropdownValue = newLanguage!;
+
+          var languageCode =
+              languages.firstWhere((lang) => lang.name == newLanguage).code;
+
+          changeLanguage(languageCode, context);
+        });
+      },
+      items: languages.map<DropdownMenuItem<String>>((lang) {
+        return DropdownMenuItem(
+          value: lang.name,
+          child: Row(
+            children: <Widget>[
+              CountryFlag.fromCountryCode(
+                lang.countryCode,
+                height: 20,
+                width: 20,
+              ),
+              const SizedBox(width: 8),
+              Text(lang.name),
+            ],
+          ),
+        );
+      }).toList(),
     );
   }
 }

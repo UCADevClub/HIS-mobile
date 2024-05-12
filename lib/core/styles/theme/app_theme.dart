@@ -80,6 +80,17 @@ class AppTheme {
       backgroundColor: _lightColors.primaryColor,
       foregroundColor: _lightColors.white,
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      border: InputBorder.none,
+      labelStyle: TextStyle(
+        color: _lightColors.grey,
+        fontSize: dimens.headlineMedium,
+      ),
+      hintStyle: TextStyle(
+        color: _lightColors.grey,
+        fontSize: dimens.headlineMedium,
+      ),
+    ),
   );
 
   static const _darkColors = appColorsDark;

@@ -29,18 +29,43 @@
   "change": "Өзгөртүү",
   "loading": "Жүктөп жатат...",
 
-  "personal_details" : "Өздүк маалымат",
+  "personal_information" : "Өздүк Маалымат",
   "settings" : "Орнотуулар",
+  "medical_data": "Тибби маалымат",
+  "insurance": "Страхование",
+  "emergency_contact" : "Арзан жолу",
+
+  "name": "Аты",
+  "surname": "Фамилия",
+  "patronymic": "Отчество",
+  "phone_number": "Телефон номери",
+  "date_of_birth": "Туулган күнү",
+  "inn": "ИНН",
+  "gender" : "Жыныс",
+  "marital_status" : "Жалпы стат",
 
   "download": "Жүктөө",
   "appointment_to_doctor": "Докторго каалаганча",
   "appointments" : "Каалаганчалар",
 
-  "medical_data": "Тибби маалымат",
-  "insurance": "Страхование",
-
   "russian": "Орусча",
   "english": "Англисче",
   "kyrgyz": "Кыргызча",
-  "language": "Тил"
+  "language": "Тил",
+
+  "home" : "Башкы бет",
+  "booking" : "Каалаганча",
+
+  "short_analysis" : "Кыскача анализ",
+  "illness_history" : "Касарлык тарыхы",
+
+  "blood_type" : "Кандын түрү",
+  "glasses_for_vision" : "Көздүн көрүнүч",
+  "allergies" : "Аллергиялар",
+  "vaccinations" : "Вакцинациялар",
+  "taking_medications" : "Дарыларды алуу",
+  "medical_condition" : "Тибби жаңылыктар",
+
+  "analysis" : "Анализ",
+  "history" : "Тарых"
 }

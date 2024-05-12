@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
 import 'package:his_mobile/presentation/pages/home_page/widgets/booking_content.dart';
 import 'package:his_mobile/presentation/pages/home_page/widgets/home_content.dart';
 import 'package:his_mobile/presentation/pages/home_page/widgets/medical_record_content.dart';
@@ -34,7 +35,7 @@ class _HomePageState extends State<HomePage> {
       key: _scaffoldKey,
       appBar: AppTopBar(
         scaffoldKey: _scaffoldKey,
-        title: 'Home',
+        title: context.l10n.home,
       ),
       body: PageView(
         controller: _pageController,

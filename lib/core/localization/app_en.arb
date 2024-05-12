@@ -25,17 +25,43 @@
   "password_change_success": "Password changed successfully",
   "change": "Change",
   "loading": "Loading",
-  "personal_details": "Personal details",
+  "personal_information": "Personal Information",
   "settings": "Settings",
+  "medical_data": "Medical data",
+  "insurance": "Insurance",
+  "emergency_contact" : "Emergency contact",
+
+  "name": "Name",
+  "surname": "Surname",
+  "patronymic": "Patronymic",
+  "phone_number": "Phone number",
+  "date_of_birth": "Date of Birth",
+  "inn": "INN",
+  "gender" : "Gender",
+  "marital_status" : "Marital status",
+
   "download": "Download",
   "appointment_to_doctor": "Appointment to doctor",
   "appointments": "Appointments",
 
-  "medical_data": "Medical data",
-  "insurance": "Insurance",
-
   "russian": "Russian",
   "english": "English",
   "kyrgyz": "Kyrgyz",
-  "language": "Language"
+  "language": "Language",
+
+  "home" : "Home",
+  "booking" : "Booking",
+
+  "short_analysis" : "Short Analysis",
+  "illness_history" : "Illness History",
+
+  "blood_type" : "Blood Type",
+  "glasses_for_vision" : "Glasses for Vision",
+  "allergies" : "Allergies",
+  "vaccinations" : "Vaccinations",
+  "taking_medications" : "Taking Medications",
+  "medical_condition" : "Medical Condition",
+
+  "analysis" : "Analysis",
+  "history" : "History"
 }

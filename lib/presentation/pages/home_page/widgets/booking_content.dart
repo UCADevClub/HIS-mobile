@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
 
 class BookingContent extends StatelessWidget {
   const BookingContent({super.key});
@@ -6,7 +7,7 @@ class BookingContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Booking'),
+      child: Text(context.l10n.booking),
     );
   }
 }

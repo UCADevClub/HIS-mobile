@@ -70,7 +70,7 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           const ChangeLanguageButton(),
           AppTextButton(
-            title: context.l10n.personal_details,
+            title: context.l10n.personal_information,
             icon: Icons.person,
             onPressed: () {
               context.router.pushNamed('/profile');

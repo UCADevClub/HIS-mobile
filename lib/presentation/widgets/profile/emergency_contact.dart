@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:his_mobile/core/extensions/context_extension.dart';
 import 'package:his_mobile/presentation/widgets/forms/drop_down_field.dart';
 import 'package:his_mobile/presentation/widgets/forms/editable_field.dart';
 
@@ -36,23 +37,23 @@ class _EmergencyContactState extends State<EmergencyContact> {
   @override
   Widget build(BuildContext context) {
     return DropDownField(
-      title: 'Emergency Contact',
+      title: context.l10n.emergency_contact,
       children: [
         EditableField(
           controller: _nameController,
-          title: 'Имя',
+          title: context.l10n.name,
         ),
         EditableField(
           controller: _surnameController,
-          title: 'Фамилия',
+          title: context.l10n.surname,
         ),
         EditableField(
           controller: _patronymicController,
-          title: 'Отчество',
+          title: context.l10n.patronymic,
         ),
         EditableField(
           controller: _phoneNumberController,
-          title: 'Номер Телефона',
+          title: context.l10n.phone_number,
         ),
       ],
     );

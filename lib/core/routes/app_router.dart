@@ -42,5 +42,9 @@ class AppRouter extends $AppRouter {
           path: "/medical-data",
           page: MedicalDataRoute.page,
         ),
+        AutoRoute(
+          path: "/settings",
+          page: SettingsRoute.page,
+        ),
       ];
 }

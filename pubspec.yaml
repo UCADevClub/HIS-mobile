@@ -35,6 +35,7 @@ dependencies:
   provider: ^6.1.2
   country_flags: ^2.2.0
   shared_preferences: ^2.2.3
+  flutter_settings_ui: ^3.0.1
 
 dev_dependencies:
   flutter_test:

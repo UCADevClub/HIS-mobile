@@ -72,16 +72,12 @@ class _AppDrawerState extends State<AppDrawer> {
           AppTextButton(
             title: context.l10n.personal_information,
             icon: Icons.person,
-            onPressed: () {
-              context.router.pushNamed('/profile');
-            },
+            onPressed: () => context.router.pushNamed('/profile'),
           ),
           AppTextButton(
             title: context.l10n.medical_data,
             icon: Icons.medical_information_outlined,
-            onPressed: () {
-              context.router.pushNamed('/medical-data');
-            },
+            onPressed: () => context.router.pushNamed('/medical-data'),
           ),
           AppTextButton(
             title: context.l10n.insurance,
@@ -91,14 +87,12 @@ class _AppDrawerState extends State<AppDrawer> {
           AppTextButton(
             title: context.l10n.change_password,
             icon: Icons.lock,
-            onPressed: () {
-              context.router.pushNamed('/change-password');
-            },
+            onPressed: () => context.router.pushNamed('/change-password'),
           ),
           AppTextButton(
             title: context.l10n.settings,
             icon: Icons.settings,
-            onPressed: () {},
+            onPressed: () => context.router.pushNamed('/settings'),
           ),
           const Spacer(),
           Padding(

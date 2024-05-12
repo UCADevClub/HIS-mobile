@@ -35,6 +35,11 @@
   "insurance": "Страхование",
   "emergency_contact" : "Арзан жолу",
 
+  "general" : "Жалпы",
+  "dark_mode" : "Кара көрүнүч",
+  "change_language" : "Тили өзгөртүү",
+  "chose_language" : "Тили тандап баштоо",
+
   "name": "Аты",
   "surname": "Фамилия",
   "patronymic": "Отчество",

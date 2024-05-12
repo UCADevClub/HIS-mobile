@@ -18,7 +18,7 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       leading: IconButton(
-        icon: const Icon(Icons.person_4_rounded),
+        icon: const Icon(Icons.person),
         onPressed: () => scaffoldKey.currentState!.openDrawer(),
       ),
       title: Text(title),

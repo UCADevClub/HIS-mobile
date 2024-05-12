@@ -35,6 +35,11 @@
   "insurance": "Страхование",
   "emergency_contact" : "Экстренные контакты",
 
+  "general" : "Общие",
+  "dark_mode" : "Темный режим",
+  "change_language" : "Изменить язык",
+  "chose_language" : "Выберите язык",
+
   "name": "Имя",
   "surname": "Фамилия",
   "patronymic": "Отчество",

@@ -31,6 +31,11 @@
   "insurance": "Insurance",
   "emergency_contact" : "Emergency contact",
 
+  "general" : "General",
+  "dark_mode" : "Dark mode",
+  "change_language" : "Change Language",
+  "chose_language" : "Choose Language that you Prefer",
+
   "name": "Name",
   "surname": "Surname",
   "patronymic": "Patronymic",

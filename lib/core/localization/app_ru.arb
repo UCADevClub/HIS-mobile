@@ -1,0 +1,78 @@
+{
+  "enter": "Войти",
+  "logout": "Выйти",
+  "error": "Ошибка",
+  "wrong_email_or_password": "Неправильная почта или пароль",
+
+  "remember_me": "Запомнить меня",
+  "forgot_password": "Забыли пароль?",
+  "welcome": "Добро пожаловать",
+
+  "email": "Электронная почта",
+  "password": "Пароль",
+  "enter_email": "Введите электронную почту",
+  "enter_password": "Введите пароль",
+
+  "email_required": "Электронная почта обязательна",
+  "email_invalid": "Неверный формат электронной почты",
+  "password_required": "Пароль обязателен",
+  "password_invalid": "Неверный формат пароля",
+  "password_min_length": "Пароль должен быть не менее 6 символов",
+  "change_password": "Изменить пароль",
+  "current_password": "Текущий пароль",
+  "new_password": "Новый пароль",
+  "confirm_password": "Подтвердите пароль",
+  "enter_current_password": "Введите текущий пароль",
+  "enter_new_password": "Введите новый пароль",
+  "enter_confirm_password": "Подтвердите пароль",
+  "passwords_not_match": "Пароли не совпадают",
+  "password_change_error": "Ошибка при изменении пароля!",
+  "password_change_success": "Пароль успешно изменен!",
+  "change": "Изменить",
+  "loading": "Загрузка...",
+
+  "personal_information": "Персональный данные",
+  "settings": "Настройки",
+  "medical_data": "Медицинские данные",
+  "insurance": "Страхование",
+  "emergency_contact" : "Экстренные контакты",
+
+  "general" : "Общие",
+  "dark_mode" : "Темный режим",
+  "change_language" : "Изменить язык",
+  "chose_language" : "Выберите язык",
+
+  "name": "Имя",
+  "surname": "Фамилия",
+  "patronymic": "Отчество",
+  "phone_number": "Номер телефона",
+  "date_of_birth": "Дата рождения",
+  "inn": "ИНН",
+  "gender" : "Пол",
+  "marital_status" : "Семейное положение",
+
+  "download": "Скачать",
+  "appointment_to_doctor": "Запись на прием к врачу",
+  "appointments" : "Записи",
+
+  "russian": "Русский",
+  "english": "Английский",
+  "kyrgyz": "Кыргызский",
+  "language": "Язык",
+
+  "home" : "Главная",
+  "booking" : "Запись",
+
+  "short_analysis" : "Краткий анализ",
+  "illness_history" : "История болезни",
+
+  "blood_type" : "Группа крови",
+  "glasses_for_vision" : "Очки для зрения",
+  "allergies" : "Аллергии",
+  "vaccinations" : "Вакцинации",
+  "taking_medications" : "Принимаемые лекарства",
+  "medical_condition" : "Медицинское состояние",
+
+  "analysis" : "Анализ",
+  "history" : "История"
+}

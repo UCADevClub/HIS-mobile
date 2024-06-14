@@ -1,0 +1,78 @@
+{
+  "enter" : "Кирүү",
+  "logout" : "Чыгуу",
+  "error": "Ката",
+  "wrong_email_or_password": "Электрондук почта же сыр сөз жараксыз",
+
+  "remember_me" : "Мени эстеп кал",
+  "forgot_password": "Сыр сөзүңүздү унуттуңузбу?",
+  "welcome": "Кош келиңиз",
+
+  "email": "Электрондук почта",
+  "password": "Сыр сөз",
+  "enter_email": "Электрондук почта киргизиңиз",
+  "enter_password": "Сыр сөз киргизиңиз",
+
+  "email_required": "Электрондук почта керек",
+  "email_invalid": "Электрондук почта форматы жараксыз",
+  "password_required": "Сыр сөз керек",
+  "password_invalid": "Сыр сөз форматы жараксыз",
+  "password_min_length": "Сыр сөз 6 символдон аз болбошу керек",
+  "change_password": "Сыр сөздү өзгөртүү",
+  "current_password": "Азырынки сыр сөз",
+  "new_password": "Жаңы сыр сөз",
+  "confirm_password": "Сыр сөздү бекитүү",
+  "enter_current_password": "Азырынки сыр сөз киргизиңиз",
+  "enter_new_password": "Жаңы сыр сөз киргизиңиз",
+  "enter_confirm_password": "Сыр сөздү бекитүү киргизиңиз",
+  "passwords_not_match": "Сыр сөздөр туура келбейт",
+  "password_change_error": "Сыр сөздү өзгөртүүдө ката кетти!",
+  "password_change_success": "Сыр сөздү өзгөртүү сӯттү!",
+  "change": "Өзгөртүү",
+  "loading": "Жүктөп жатат...",
+
+  "personal_information" : "Өздүк Маалымат",
+  "settings" : "Орнотуулар",
+  "medical_data": "Тибби маалымат",
+  "insurance": "Страхование",
+  "emergency_contact" : "Арзан жолу",
+
+  "general" : "Жалпы",
+  "dark_mode" : "Кара көрүнүч",
+  "change_language" : "Тили өзгөртүү",
+  "chose_language" : "Тили тандап баштоо",
+
+  "name": "Аты",
+  "surname": "Фамилия",
+  "patronymic": "Отчество",
+  "phone_number": "Телефон номери",
+  "date_of_birth": "Туулган күнү",
+  "inn": "ИНН",
+  "gender" : "Жыныс",
+  "marital_status" : "Жалпы стат",
+
+  "download": "Жүктөө",
+  "appointment_to_doctor": "Докторго каалаганча",
+  "appointments" : "Каалаганчалар",
+
+  "russian": "Орусча",
+  "english": "Англисче",
+  "kyrgyz": "Кыргызча",
+  "language": "Тил",
+
+  "home" : "Башкы бет",
+  "booking" : "Каалаганча",
+
+  "short_analysis" : "Кыскача анализ",
+  "illness_history" : "Касарлык тарыхы",
+
+  "blood_type" : "Кандын түрү",
+  "glasses_for_vision" : "Көздүн көрүнүч",
+  "allergies" : "Аллергиялар",
+  "vaccinations" : "Вакцинациялар",
+  "taking_medications" : "Дарыларды алуу",
+  "medical_condition" : "Тибби жаңылыктар",
+
+  "analysis" : "Анализ",
+  "history" : "Тарых"
+}

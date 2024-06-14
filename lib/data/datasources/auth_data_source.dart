@@ -1,7 +1,8 @@
 import 'package:his_mobile/data/datasources/remote/auth_service.dart';
+import 'package:his_mobile/data/models/auth_model.dart';
 
 abstract class AuthDataSource {
-  Future<String> signInWithEmailAndPassword({
+  Future<AuthModel> signInWithEmailAndPassword({
     required String email,
     required String password,
   });
@@ -24,7 +25,7 @@ class AuthDataSourceImpl implements AuthDataSource {
   AuthDataSourceImpl(this.authService);
 
   @override
-  Future<String> signInWithEmailAndPassword({
+  Future<AuthModel> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -33,8 +34,11 @@ class AuthDataSourceImpl implements AuthDataSource {
         email: email,
         password: password,
       );
+
+      print(response);
       return response;
     } catch (e) {
+      print(e);
       rethrow;
     }
   }

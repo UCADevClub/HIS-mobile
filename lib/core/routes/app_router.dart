@@ -11,20 +11,17 @@ class AppRouter extends $AppRouter {
 
   @override
   RouteType get defaultRouteType => const RouteType.material();
-
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
           path: "/auth",
           page: AuthRoute.page,
-          // guards: [authGuard],
-          // initial: true,
+          initial: true,
         ),
         AutoRoute(
           path: "/home",
           page: HomeRoute.page,
-          // guards: [authGuard],
-          initial: true,
+          // initial: true,
         ),
         AutoRoute(
           path: "/drawer",

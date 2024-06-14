@@ -5,8 +5,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:his_mobile/core/extensions/context_extension.dart';
 import 'package:his_mobile/core/mixin/dialog_helper.dart';
-import 'package:his_mobile/domain/usecases/sign_in_usecase.dart';
 import 'package:his_mobile/presentation/bloc/auth_bloc/auth_bloc.dart';
+import 'package:his_mobile/presentation/bloc/auth_bloc/auth_event.dart';
+import 'package:his_mobile/presentation/bloc/auth_bloc/auth_state.dart';
 import 'package:his_mobile/presentation/widgets/auth_widgets/login_field.dart';
 import 'package:his_mobile/presentation/widgets/buttons/app_button.dart';
 
@@ -34,17 +35,18 @@ class _AuthPageState extends State<AuthPage> with DialogHelper {
   Widget _buildBlocListener(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state.status == AuthStatus.loading) {
+        if (state is AuthLoading) {
           EasyLoading.show(status: context.l10n.loading);
-        } else {
-          EasyLoading.dismiss();
-        }
-        if (state.status == AuthStatus.failure) {
+        } else if (state is AuthError) {
           showMessageDialog(
             context: context,
-            message: state.status.toString(),
-            content: state.error,
+            message: context.l10n.error,
+            content: context.l10n.wrong_email_or_password,
           );
+          EasyLoading.dismiss();
+        } else {
+          context.router.pushNamed('/home');
+          EasyLoading.dismiss();
         }
       },
       child: SafeArea(child: _buildForm(context)),
@@ -108,11 +110,9 @@ class _AuthPageState extends State<AuthPage> with DialogHelper {
                     onPressed: () {
                       if (loginKey.currentState!.validate()) {
                         context.read<AuthBloc>().add(
-                              LoginRequested(
-                                SignInParams(
-                                  email: _loginController.text,
-                                  password: _passwordController.text,
-                                ),
+                              SignInRequested(
+                                _loginController.text,
+                                _passwordController.text,
                               ),
                             );
                       }

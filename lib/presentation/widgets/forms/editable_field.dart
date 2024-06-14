@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_bloc.dart';
+import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_state.dart';
 
 class EditableField extends StatefulWidget {
   final String title;

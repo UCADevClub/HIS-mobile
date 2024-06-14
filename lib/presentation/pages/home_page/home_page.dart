@@ -21,7 +21,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 1;
 
-  final PageController _pageController = PageController();
+  final PageController _pageController = PageController(
+    initialPage: 1,
+  );
 
   @override
   void dispose() {

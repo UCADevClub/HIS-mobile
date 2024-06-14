@@ -1,59 +1,66 @@
-// ignore_for_file: depend_on_referenced_packages
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:his_mobile/data/datasources/auth_data_source.dart';
 
-import 'dart:async';
-
-import 'package:bloc/bloc.dart';
-import 'package:his_mobile/domain/usecases/sign_in_usecase.dart';
-import 'package:meta/meta.dart';
-
-part 'auth_event.dart';
-part 'auth_state.dart';
+import 'auth_event.dart';
+import 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc(
-    this.signInUseCase,
-  ) : super(const AuthState()) {
-    on<LoginRequested>(_onLoginRequested);
-    on<LogoutRequested>(_onLogoutRequested);
+  final AuthDataSource authDataSource;
+
+  AuthBloc(this.authDataSource) : super(AuthInitial()) {
+    on<SignInRequested>(_onSignInRequested);
+    on<SignOutRequested>(_onSignOutRequested);
+    on<ForgotPasswordRequested>(_onForgotPasswordRequested);
+    on<ChangePasswordRequested>(_onChangePasswordRequested);
   }
 
-  final SignInUseCase signInUseCase;
-
-  Future<void> _onLoginRequested(
-    LoginRequested event,
-    Emitter<AuthState> emit,
-  ) async {
-    emit(
-      const AuthState(status: AuthStatus.loading),
-    );
-
-    final failureOrSignIn = await signInUseCase(event.signInParams);
-    return failureOrSignIn.fold(
-      (failure) => emit(
-        AuthState(
-          status: AuthStatus.failure,
-          error: failure.message,
-        ),
-      ),
-      (signIn) {
-        emit(
-          const AuthState(
-            status: AuthStatus.success,
-            error: '',
-          ),
-        );
-      },
-    );
+  Future<void> _onSignInRequested(
+      SignInRequested event, Emitter<AuthState> emit) async {
+    emit(AuthLoading());
+    try {
+      final authModel = await authDataSource.signInWithEmailAndPassword(
+        email: event.email,
+        password: event.password,
+      );
+      emit(AuthAuthenticated(authModel));
+    } catch (e) {
+      emit(AuthError(e.toString()));
+    }
   }
 
-  Future<void> _onLogoutRequested(
-    LogoutRequested event,
-    Emitter<AuthState> emit,
-  ) async {
-    emit(
-      const AuthState(
-        status: AuthStatus.unauthenticated,
-      ),
-    );
+  Future<void> _onSignOutRequested(
+      SignOutRequested event, Emitter<AuthState> emit) async {
+    emit(AuthLoading());
+    try {
+      await authDataSource.logout();
+      emit(AuthUnauthenticated());
+    } catch (e) {
+      emit(AuthError(e.toString()));
+    }
+  }
+
+  Future<void> _onForgotPasswordRequested(
+      ForgotPasswordRequested event, Emitter<AuthState> emit) async {
+    emit(AuthLoading());
+    try {
+      await authDataSource.forgotPassword(email: event.email);
+      emit(AuthInitial());
+    } catch (e) {
+      emit(AuthError(e.toString()));
+    }
+  }
+
+  Future<void> _onChangePasswordRequested(
+      ChangePasswordRequested event, Emitter<AuthState> emit) async {
+    emit(AuthLoading());
+    try {
+      await authDataSource.changePassword(
+        currentPassword: event.currentPassword,
+        newPassword: event.newPassword,
+      );
+      emit(AuthInitial());
+    } catch (e) {
+      emit(AuthError(e.toString()));
+    }
   }
 }

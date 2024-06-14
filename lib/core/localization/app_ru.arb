@@ -1,6 +1,8 @@
 {
   "enter": "Войти",
   "logout": "Выйти",
+  "error": "Ошибка",
+  "wrong_email_or_password": "Неправильная почта или пароль",
 
   "remember_me": "Запомнить меня",
   "forgot_password": "Забыли пароль?",

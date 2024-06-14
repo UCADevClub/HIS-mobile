@@ -1,32 +1,41 @@
-part of 'user_info_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:his_mobile/data/models/auth_model.dart';
 
-@immutable
-abstract class UserInfoState {}
+abstract class UserInfoState extends Equatable {
+  const UserInfoState();
+
+  @override
+  List<Object> get props => [];
+}
 
 class UserInfoInitial extends UserInfoState {}
 
 class UserInfoLoading extends UserInfoState {}
 
 class UserInfoLoaded extends UserInfoState {
-  final User user;
+  final AuthModel authModel;
+  final bool isEditing;
 
-  UserInfoLoaded(this.user);
+  const UserInfoLoaded(this.authModel, {this.isEditing = false});
+
+  @override
+  List<Object> get props => [authModel, isEditing];
 }
 
 class UserInfoUpdating extends UserInfoState {
   final bool isUpdating;
 
-  UserInfoUpdating(this.isUpdating);
-}
+  const UserInfoUpdating(this.isUpdating);
 
-class UserInfoUpdated extends UserInfoState {
-  final User user;
-
-  UserInfoUpdated(this.user);
+  @override
+  List<Object> get props => [isUpdating];
 }
 
 class UserInfoError extends UserInfoState {
   final String message;
 
-  UserInfoError(this.message);
+  const UserInfoError(this.message);
+
+  @override
+  List<Object> get props => [message];
 }

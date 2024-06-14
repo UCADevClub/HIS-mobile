@@ -5,6 +5,7 @@ import 'package:his_mobile/core/error/auth_error.dart';
 import 'package:his_mobile/core/error/failures.dart';
 import 'package:his_mobile/core/network/network_info.dart';
 import 'package:his_mobile/data/datasources/auth_data_source.dart';
+import 'package:his_mobile/data/models/auth_model.dart';
 import 'package:his_mobile/domain/repositories/auth_repository.dart';
 import 'package:his_mobile/domain/usecases/sign_in_usecase.dart';
 
@@ -44,7 +45,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<AuthError, String>> signInWithEmailAndPassword(
+  Future<Either<AuthError, AuthModel>> signInWithEmailAndPassword(
     SignInParams signInParams,
   ) async {
     final networkConnection = await _checkNetworkConnection();
@@ -62,7 +63,7 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
-  Future<Either<AuthError, String>> _attemptSignIn(
+  Future<Either<AuthError, AuthModel>> _attemptSignIn(
       SignInParams signInParams) async {
     try {
       final response = await authDataSource.signInWithEmailAndPassword(

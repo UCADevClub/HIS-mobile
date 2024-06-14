@@ -1,6 +1,8 @@
 {
   "enter" : "Кирүү",
   "logout" : "Чыгуу",
+  "error": "Ката",
+  "wrong_email_or_password": "Электрондук почта же сыр сөз жараксыз",
 
   "remember_me" : "Мени эстеп кал",
   "forgot_password": "Сыр сөзүңүздү унуттуңузбу?",

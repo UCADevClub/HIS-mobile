@@ -1,6 +1,9 @@
 {
   "enter": "Enter",
   "logout": "Logout",
+  "error": "Error",
+  "wrong_email_or_password": "Wrong email or password",
+
   "remember_me": "Remember me",
   "forgot_password": "Forgot password?",
   "welcome": "Welcome",

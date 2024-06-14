@@ -2,6 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_bloc.dart';
+import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_state.dart';
 import 'package:his_mobile/presentation/widgets/profile/emergency_contact.dart';
 import 'package:his_mobile/presentation/widgets/profile/personal_information.dart';
 

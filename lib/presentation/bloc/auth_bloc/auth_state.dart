@@ -1,24 +1,33 @@
-part of 'auth_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:his_mobile/data/models/auth_model.dart';
 
-enum AuthStatus { initial, loading, success, failure, unauthenticated}
+abstract class AuthState extends Equatable {
+  const AuthState();
 
-@immutable
-class AuthState {
-  final AuthStatus status;
-  final String error;
+  @override
+  List<Object> get props => [];
+}
 
-  const AuthState({
-    this.status = AuthStatus.initial,
-    this.error = '',
-  });
+class AuthInitial extends AuthState {}
 
-  AuthState copyWith({
-    AuthStatus? status,
-    String? error,
-  }) {
-    return AuthState(
-      status: status ?? this.status,
-      error: error ?? this.error,
-    );
-  }
+class AuthLoading extends AuthState {}
+
+class AuthAuthenticated extends AuthState {
+  final AuthModel authModel;
+
+  const AuthAuthenticated(this.authModel);
+
+  @override
+  List<Object> get props => [authModel];
+}
+
+class AuthUnauthenticated extends AuthState {}
+
+class AuthError extends AuthState {
+  final String message;
+
+  const AuthError(this.message);
+
+  @override
+  List<Object> get props => [message];
 }

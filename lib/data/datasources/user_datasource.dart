@@ -25,7 +25,7 @@ class UserDataSourceImpl implements UserDataSource {
   @override
   Future<dynamic> getUserDetails() async {
     try {
-      final response = await userDetailsService.getUserDetails(inn: '1');
+      final response = await userDetailsService.getUserDetails(user_id: 1);
       return response;
     } catch (e) {
       rethrow;

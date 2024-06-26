@@ -7,9 +7,9 @@ part 'user_service.g.dart';
 abstract class UserService {
   factory UserService(Dio dio) = _UserService;
 
-  @GET('patient/patient-detail/{inn}/')
+  @GET('patient/patient-detail/{user_id}/')
   Future<String> getUserDetails({
-    @Path('inn') required String inn,
+    @Path('user_id') required int user_id,
   });
 
   @PATCH('patient/patient-detail/{inn}/')

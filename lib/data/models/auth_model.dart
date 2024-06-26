@@ -7,7 +7,7 @@ part 'auth_model.g.dart';
 class AuthModel with _$AuthModel {
   const factory AuthModel({
     required String token,
-    required int user_id,
+    required int id,
     required String email,
     required String first_name,
     required String last_name,

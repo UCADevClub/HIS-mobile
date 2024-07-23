@@ -51,7 +51,7 @@ class _HisMobileState extends State<HisMobile> {
           create: (BuildContext context) => sl<AuthBloc>(),
         ),
         BlocProvider<UserInfoBloc>(
-          create: (BuildContext context) => UserInfoBloc(),
+          create: (BuildContext context) => sl<UserInfoBloc>(),
         ),
       ],
       child: MaterialApp.router(

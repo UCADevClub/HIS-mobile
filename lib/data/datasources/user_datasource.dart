@@ -1,7 +1,10 @@
+import 'package:his_mobile/core/di/service_locator.dart';
+import 'package:his_mobile/data/datasources/locally/user_data.dart';
 import 'package:his_mobile/data/datasources/remote/user_service.dart';
+import 'package:his_mobile/data/models/user_models/user_model.dart';
 
 abstract class UserDataSource {
-  Future<dynamic> getUserDetails();
+  Future<User> getUserDetails();
 
   Future<dynamic> updateUserDetails({
     required String name,
@@ -23,9 +26,12 @@ class UserDataSourceImpl implements UserDataSource {
   UserDataSourceImpl(this.userDetailsService);
 
   @override
-  Future<dynamic> getUserDetails() async {
+  Future<User> getUserDetails() async {
     try {
-      final response = await userDetailsService.getUserDetails(inn: '1');
+      final userData = sl<UserData>().getUser()!;
+      final response = await userDetailsService.getUserDetails(
+        user_id: userData.id,
+      );
       return response;
     } catch (e) {
       rethrow;

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:his_mobile/data/models/user_models/user_model.dart';
 import 'package:retrofit/http.dart';
 
 part 'user_service.g.dart';
@@ -7,9 +8,9 @@ part 'user_service.g.dart';
 abstract class UserService {
   factory UserService(Dio dio) = _UserService;
 
-  @GET('patient/patient-detail/{inn}/')
-  Future<String> getUserDetails({
-    @Path('inn') required String inn,
+  @GET('patient/patient-detail/{user_id}')
+  Future<User> getUserDetails({
+    @Path('user_id') required int user_id,
   });
 
   @PATCH('patient/patient-detail/{inn}/')

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:his_mobile/data/models/auth_model.dart';
+import 'package:his_mobile/data/models/user_models/user_model.dart';
 
 abstract class UserInfoState extends Equatable {
   const UserInfoState();
@@ -13,13 +13,16 @@ class UserInfoInitial extends UserInfoState {}
 class UserInfoLoading extends UserInfoState {}
 
 class UserInfoLoaded extends UserInfoState {
-  final AuthModel authModel;
+  final User user;
   final bool isEditing;
 
-  const UserInfoLoaded(this.authModel, {this.isEditing = false});
+  const UserInfoLoaded(this.user, {this.isEditing = false});
 
   @override
-  List<Object> get props => [authModel, isEditing];
+  List<Object> get props => [
+        user,
+        isEditing,
+      ];
 }
 
 class UserInfoUpdating extends UserInfoState {

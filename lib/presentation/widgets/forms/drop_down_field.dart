@@ -4,11 +4,11 @@ class DropDownField extends StatefulWidget {
   const DropDownField({
     super.key,
     required this.title,
-    required this.children,
+    required this.child,
   });
 
   final String title;
-  final List<Widget> children;
+  final Widget child;
 
   @override
   State<DropDownField> createState() => _DropDownFieldState();
@@ -49,11 +49,7 @@ class _DropDownFieldState extends State<DropDownField> {
               left: 20,
               right: 20,
             ),
-            child: Column(
-              children: [
-                ...widget.children,
-              ],
-            ),
+            child: widget.child,
           ),
       ],
     );

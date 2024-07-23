@@ -1,24 +1,38 @@
-part of 'user_info_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:his_mobile/data/models/user_models/user_model.dart';
 
-@immutable
-abstract class UserInfoEvent {}
+abstract class UserInfoEvent extends Equatable {
+  const UserInfoEvent();
+
+  @override
+  List<Object> get props => [];
+}
 
 class UserInfoLoad extends UserInfoEvent {}
 
 class UserInfoUpdate extends UserInfoEvent {
   final User user;
 
-  UserInfoUpdate(this.user);
+  const UserInfoUpdate(this.user);
+
+  @override
+  List<Object> get props => [user];
 }
 
 class ToggleUserInfoUpdate extends UserInfoEvent {
   final bool isUpdating;
 
-  ToggleUserInfoUpdate(this.isUpdating);
+  const ToggleUserInfoUpdate(this.isUpdating);
+
+  @override
+  List<Object> get props => [isUpdating];
 }
 
 class UserInfoErrorEvent extends UserInfoEvent {
   final String message;
 
-  UserInfoErrorEvent(this.message);
+  const UserInfoErrorEvent(this.message);
+
+  @override
+  List<Object> get props => [message];
 }

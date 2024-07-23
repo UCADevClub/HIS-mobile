@@ -7,11 +7,11 @@ part 'emergency_contact_model.g.dart';
 @freezed
 class EmergencyContact with _$EmergencyContact {
   const factory EmergencyContact({
-    required String firstName,
-    String? middleName,
-    required String lastName,
-    required String phoneNumber,
-    required Address address,
+    required int id,
+    required String first_name,
+    String? middle_name,
+    required String last_name,
+    required String phone_number,
   }) = _EmergencyContact;
 
   factory EmergencyContact.fromJson(Map<String, dynamic> json) =>

@@ -1,18 +1,32 @@
 import 'package:bloc/bloc.dart';
-import 'package:his_mobile/domain/entities/user_entity.dart';
+import 'package:his_mobile/data/datasources/user_datasource.dart';
+import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_event.dart';
 import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_state.dart';
-import 'package:meta/meta.dart';
-
-part 'user_info_event.dart';
 
 class UserInfoBloc extends Bloc<UserInfoEvent, UserInfoState> {
-  UserInfoBloc() : super(UserInfoInitial()) {
+  final UserDataSource userDataSource;
+
+  UserInfoBloc(this.userDataSource) : super(UserInfoInitial()) {
     on<UserInfoEvent>((event, emit) {});
     on<ToggleUserInfoUpdate>((event, emit) {
       emit(UserInfoUpdating(event.isUpdating));
     });
-    // on<UserInfoUpdate>((event, emit) {
-    //   emit(UserInfoLoaded());
-    // });
+    on<UserInfoLoad>(_onProfileViewed);
+  }
+
+  Future<void> _onProfileViewed(
+    UserInfoLoad event,
+    Emitter<UserInfoState> emit,
+  ) async {
+    try {
+      final userInfo = await userDataSource.getUserDetails();
+      emit(
+        UserInfoLoaded(userInfo),
+      );
+    } catch (e) {
+      emit(
+        UserInfoError(e.toString()),
+      );
+    }
   }
 }

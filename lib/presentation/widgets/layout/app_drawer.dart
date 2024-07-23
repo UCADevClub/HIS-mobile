@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:his_mobile/core/di/service_locator.dart';
 import 'package:his_mobile/core/extensions/context_extension.dart';
+import 'package:his_mobile/data/datasources/locally/user_data.dart';
 import 'package:his_mobile/presentation/application/application.dart';
-import 'package:his_mobile/presentation/bloc/auth_bloc/auth_bloc.dart';
-import 'package:his_mobile/presentation/bloc/auth_bloc/auth_state.dart';
+import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_bloc.dart';
+import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_event.dart';
 import 'package:his_mobile/presentation/widgets/buttons/app_button.dart';
 import 'package:his_mobile/presentation/widgets/buttons/app_text_button.dart';
 import 'package:his_mobile/presentation/widgets/buttons/change_language_button.dart';
@@ -29,73 +31,62 @@ class AppDrawer extends StatelessWidget {
   }
 
   Widget _buildDrawerHeader(BuildContext context) {
+    final userData = sl<UserData>().getUser()!;
+    final name = '${userData.first_name} ${userData.last_name}';
+    final email = userData.email;
     return SizedBox(
       height: 250,
       child: DrawerHeader(
         decoration: BoxDecoration(
           color: Theme.of(context).primaryColor,
         ),
-        child: BlocBuilder<AuthBloc, AuthState>(
-          builder: (context, state) {
-            if (state is AuthAuthenticated) {
-              final name =
-                  '${state.authModel.first_name} ${state.authModel.last_name}';
-              final email = state.authModel.email;
-              return _buildUserInfo(name, email);
-            }
-            return const SizedBox.shrink();
-          },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                color: Colors.grey,
+                shape: BoxShape.circle,
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Icon(
+                  Icons.person,
+                  size: 70,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Center(
+              child: FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Text(
+                  name,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Center(
+              child: FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Text(
+                  email,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
         ),
       ),
-    );
-  }
-
-  Widget _buildUserInfo(String name, String email) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Container(
-          decoration: const BoxDecoration(
-            color: Colors.grey,
-            shape: BoxShape.circle,
-          ),
-          child: const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Icon(
-              Icons.person,
-              size: 70,
-              color: Colors.white,
-            ),
-          ),
-        ),
-        const SizedBox(height: 10),
-        Center(
-          child: FittedBox(
-            fit: BoxFit.fitWidth,
-            child: Text(
-              name,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(height: 10),
-        Center(
-          child: FittedBox(
-            fit: BoxFit.fitWidth,
-            child: Text(
-              email,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(height: 10),
-      ],
     );
   }
 
@@ -105,7 +96,10 @@ class AppDrawer extends StatelessWidget {
         AppTextButton(
           title: context.l10n.personal_information,
           icon: Icons.person,
-          onPressed: () => context.router.pushNamed('/profile'),
+          onPressed: () {
+            context.read<UserInfoBloc>().add(UserInfoLoad());
+            context.router.pushNamed('/profile');
+          },
         ),
         AppTextButton(
           title: context.l10n.medical_data,

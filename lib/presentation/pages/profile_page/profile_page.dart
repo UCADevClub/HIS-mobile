@@ -2,9 +2,12 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_bloc.dart';
+import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_event.dart';
 import 'package:his_mobile/presentation/bloc/user_info_bloc/user_info_state.dart';
 import 'package:his_mobile/presentation/widgets/profile/emergency_contact.dart';
 import 'package:his_mobile/presentation/widgets/profile/personal_information.dart';
+
+import '../../../data/models/user_models/user_model.dart';
 
 @RoutePage()
 class ProfilePage extends StatefulWidget {
@@ -26,18 +29,55 @@ class _ProfilePageState extends State<ProfilePage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
 
+  final TextEditingController _primaryNameController = TextEditingController();
+  final TextEditingController _primarySurnameController =
+      TextEditingController();
+  final TextEditingController _primaryPatronymicController =
+      TextEditingController();
+  final TextEditingController _primaryPhoneNumberController =
+      TextEditingController();
+  final TextEditingController _secondaryNameController =
+      TextEditingController();
+  final TextEditingController _secondarySurnameController =
+      TextEditingController();
+  final TextEditingController _secondaryPatronymicController =
+      TextEditingController();
+  final TextEditingController _secondaryPhoneNumberController =
+      TextEditingController();
+
   @override
   void initState() {
-    _nameController.text = 'Рамиль';
-    _surnameController.text = 'Салихар';
-    _patronymicController.text = 'Шамильевич';
-    _innController.text = '12345678912345';
-    _birthDateController.text = '01.01.2000';
-    _genderController.text = 'Мужской';
-    _maritalStatusController.text = 'Холост';
-    _emailController.text = 'ramil.salihar_2025@ucentralasia.org';
-    _phoneNumberController.text = '+996 555 555 555';
+    final state = context.read<UserInfoBloc>().state;
+    if (state is UserInfoLoaded) {
+      _updateControllers(state.user);
+    }
     super.initState();
+  }
+
+  void _updateControllers(User user) {
+    _nameController.text = user.first_name;
+    _surnameController.text = user.last_name;
+    _patronymicController.text = user.middle_name ?? '';
+    _innController.text = user.id.toString();
+    _birthDateController.text = user.date_of_birth ?? '';
+    _genderController.text = user.gender ?? '';
+    _maritalStatusController.text = user.marital_status ?? '';
+    _emailController.text = user.email;
+    _phoneNumberController.text = user.phone_number;
+
+    _primaryNameController.text = user.primary_emergency_contact.first_name;
+    _primarySurnameController.text = user.primary_emergency_contact.last_name;
+    _primaryPatronymicController.text =
+        user.primary_emergency_contact.middle_name ?? '';
+    _primaryPhoneNumberController.text =
+        user.primary_emergency_contact.phone_number;
+    _secondaryNameController.text = user.secondary_emergency_contact.first_name;
+    _secondarySurnameController.text =
+        user.secondary_emergency_contact.last_name;
+    _secondaryPatronymicController.text =
+        user.secondary_emergency_contact.middle_name ?? '';
+    _secondaryPhoneNumberController.text =
+        user.secondary_emergency_contact.phone_number;
   }
 
   @override
@@ -66,8 +106,27 @@ class _ProfilePageState extends State<ProfilePage> {
                   size: 60,
                 ),
               ),
-              const PersonalInformation(),
-              const EmergencyContact()
+              PersonalInformation(
+                nameController: _nameController,
+                surnameController: _surnameController,
+                patronymicController: _patronymicController,
+                innController: _innController,
+                birthDateController: _birthDateController,
+                genderController: _genderController,
+                maritalStatusController: _maritalStatusController,
+                emailController: _emailController,
+                phoneNumberController: _phoneNumberController,
+              ),
+              EmergencyContact(
+                primaryNameController: _primaryNameController,
+                primarySurnameController: _primarySurnameController,
+                primaryPatronymicController: _primaryPatronymicController,
+                primaryPhoneNumberController: _primaryPhoneNumberController,
+                secondaryNameController: _secondaryNameController,
+                secondarySurnameController: _secondarySurnameController,
+                secondaryPatronymicController: _secondaryPatronymicController,
+                secondaryPhoneNumberController: _secondaryPhoneNumberController,
+              )
             ],
           )),
           floatingActionButton: FloatingActionButton(
